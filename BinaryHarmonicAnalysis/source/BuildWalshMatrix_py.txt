@@ -1,0 +1,100 @@
+﻿import math
+import numpy as np 
+from scipy.linalg import hadamard
+from sympy.combinatorics.graycode import GrayCode
+import torch
+
+#region Helpers build Walsh matrix, permutation Hadmard matrix to  Walsh matrix
+
+
+# convert in the base 2 to the base 10
+def conv_list_b2_b10(l): 
+    N = len(l)
+    for i in range(N):
+        l[i] = int(l[i],2)
+    return(l)
+    
+
+# generate a matrix of zero and ones from list of index
+def Mat_of_ones_from_list_index(l): 
+    N = len(l)
+    M_out = np.zeros((N,N))
+    for i in range(N):
+        M_out[i,l[i]] = 1
+    return(M_out)
+    
+
+# generate the N grey code permutation matrix
+def gray_code_permutation(n): 
+    N = int(math.log(n, 2))
+    graycode = GrayCode(N)
+    graycode_list = list(graycode.generate_gray())
+    return(Mat_of_ones_from_list_index(conv_list_b2_b10((graycode_list))))
+    
+    
+
+# generate bit reverse
+def bit_reverse_traverse(a): 
+    n = a.shape[0]
+    # check that n is a power of 2
+    assert(not n&(n-1) ) 
+
+    if n == 1:
+        yield a[0]
+    else:
+        even_index = np.arange(n//2)*2
+        odd_index = np.arange(n//2)*2 + 1
+        for even in bit_reverse_traverse(a[even_index]):
+            yield even
+        for odd in bit_reverse_traverse(a[odd_index]):
+            yield odd
+
+
+# generate bit reverse for list
+def get_bit_reversed_list(l): 
+    n = len(l)
+
+    indexs = np.arange(n)
+    b = []
+    for i in bit_reverse_traverse(indexs):
+        b.append(l[i])
+
+    return b
+
+
+# generate bit reverse for matrix
+def bit_reverse_matrix(n):
+    l_br = get_bit_reversed_list([k for k in range(n)])
+    Mat_out = np.zeros((n,n))
+    
+    for i in range(n):
+        Mat_out[i,l_br[i]] = 1
+    return(Mat_out)
+    
+
+def walsh_matrix(n):
+
+
+    BR = bit_reverse_matrix(n)
+    GRp = gray_code_permutation(n)
+    H = hadamard(n)
+    # Apply permutation Hadmard matrix to  Walsh matrix
+    return(np.dot(np.dot(GRp,BR),H))  
+  
+
+def functionF(x):
+    return x**2+6*x
+
+#endregion
+
+if __name__ == "__main__":
+
+     n = 8 
+
+     if n < 0: 
+        print("error: n must be an positive integer")
+     elif 2 ** int(math.log(n, 2))!= n:
+        print("error: n must be a power of 2")
+     else:
+        print("Walsh matrix:\n")
+        print(walsh_matrix(n))
