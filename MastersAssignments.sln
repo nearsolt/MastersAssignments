@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarmonicAnalysis", "Harmoni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryHarmonicAnalysis", "BinaryHarmonicAnalysis\BinaryHarmonicAnalysis.csproj", "{9AFFC24D-6B53-4C67-B7D3-C26D831A7EC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernComputerTechnologies", "ModernComputerTechnologies\ModernComputerTechnologies.csproj", "{D7A9FA4F-8FA4-430F-8436-EF9ECC6863EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9AFFC24D-6B53-4C67-B7D3-C26D831A7EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AFFC24D-6B53-4C67-B7D3-C26D831A7EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AFFC24D-6B53-4C67-B7D3-C26D831A7EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A9FA4F-8FA4-430F-8436-EF9ECC6863EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A9FA4F-8FA4-430F-8436-EF9ECC6863EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A9FA4F-8FA4-430F-8436-EF9ECC6863EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A9FA4F-8FA4-430F-8436-EF9ECC6863EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
