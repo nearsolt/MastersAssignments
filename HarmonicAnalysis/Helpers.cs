@@ -82,5 +82,68 @@ namespace HarmonicAnalysis {
         }
 
         #endregion
+
+        #region task 1: alternative
+
+        internal static Complex[] FFTAl(Complex[] array) {
+            int partitionsNumber = array.Length;
+            int powerOfTwo = 0;
+            if (IsPowerOfTwo(partitionsNumber)) {
+                powerOfTwo = Convert.ToInt32(Math.Log(partitionsNumber, 2));
+                Console.WriteLine($"{nameof(partitionsNumber)} = {partitionsNumber}, {nameof(powerOfTwo)} = {powerOfTwo}");
+            }
+            Complex[] tmp = new Complex[partitionsNumber];
+            for (int k = 0; k < powerOfTwo; k++) {
+                for (int i = 0; i < Convert.ToInt32(Math.Pow(2, k)); i++) {
+                    for (int j = 0; j < Convert.ToInt32(Math.Pow(2, powerOfTwo - k - 1)); j++) {
+                        tmp[Convert.ToInt32(Math.Pow(2.0, k)) * 2 * j + i] =
+                            (array[Convert.ToInt32(Math.Pow(2.0, k)) * j + i] + array[Convert.ToInt32(Math.Pow(2.0, k)) * (j + Convert.ToInt32(Math.Pow(2.0, powerOfTwo - k - 1))) + i]) / Math.Sqrt(2.0);
+
+                        tmp[Convert.ToInt32(Math.Pow(2.0, k)) * (2 * j + 1) + i] = CalcExp(k, j, powerOfTwo) *
+                            (array[Convert.ToInt32(Math.Pow(2.0, k)) * j + i] - array[Convert.ToInt32(Math.Pow(2.0, k)) * (j + Convert.ToInt32(Math.Pow(2.0, powerOfTwo - k - 1))) + i]) / Math.Sqrt(2.0);
+
+                    }
+                }
+            }
+            return tmp;
+        }
+
+
+        static Complex CalcExp(int k, int j, int N) {
+            double arg = -2.0 * Math.PI * j / Convert.ToInt32(Math.Pow(2.0, N - k));
+            return new Complex(Math.Cos(arg), Math.Sin(arg));
+        }
+
+        internal static Complex[] IFFTAl(Complex[] array) {
+            int partitionsNumber = array.Length;
+            int powerOfTwo = 0;
+            if (IsPowerOfTwo(partitionsNumber)) {
+                powerOfTwo = Convert.ToInt32(Math.Log(partitionsNumber, 2));
+                Console.WriteLine($"{nameof(partitionsNumber)} = {partitionsNumber}, {nameof(powerOfTwo)} = {powerOfTwo}");
+            }
+            Complex[] tmp = new Complex[partitionsNumber];
+            for (int k = 0; k < powerOfTwo; k++) {
+                for (int i = 0; i < Convert.ToInt32(Math.Pow(2, k)); i++) {
+                    for (int j = 0; j < Convert.ToInt32(Math.Pow(2, powerOfTwo - k - 1)); j++) {
+                        tmp[Convert.ToInt32(Math.Pow(2.0, k)) * 2 * j + i] =
+                            (array[Convert.ToInt32(Math.Pow(2.0, k)) * j + i] + array[Convert.ToInt32(Math.Pow(2.0, k)) * (j + Convert.ToInt32(Math.Pow(2.0, powerOfTwo - k - 1))) + i]) / Math.Sqrt(2.0);
+
+                        tmp[Convert.ToInt32(Math.Pow(2.0, k)) * (2 * j + 1) + i] = ICalcExp(k, j, powerOfTwo) *
+                            (array[Convert.ToInt32(Math.Pow(2.0, k)) * j + i] - array[Convert.ToInt32(Math.Pow(2.0, k)) * (j + Convert.ToInt32(Math.Pow(2.0, powerOfTwo - k - 1))) + i]) / Math.Sqrt(2.0);
+
+                    }
+                }
+            }
+            return tmp;
+        }
+
+
+        static Complex ICalcExp(int k, int j, int N) {
+            double arg = 2.0 * Math.PI * j / Convert.ToInt32(Math.Pow(2.0, N - k));
+            return new Complex(Math.Cos(arg), Math.Sin(arg));
+        }
+
+
+        #endregion
     }
 }
