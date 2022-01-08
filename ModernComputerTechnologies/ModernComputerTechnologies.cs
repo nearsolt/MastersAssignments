@@ -17,7 +17,7 @@ namespace ModernComputerTechnologies {
 
             int[] initialArray = new int[arrayLength];
 
-            Task1.FillRandom(initialArray, arrayLength);
+            Helpers.FillRandom(initialArray, arrayLength);
             Console.WriteLine($"Array lenght = {arrayLength}\n");
             //Console.WriteLine($"Unsorted array:\n{string.Join(" ,", initialArray.ToArray())}\n");
 

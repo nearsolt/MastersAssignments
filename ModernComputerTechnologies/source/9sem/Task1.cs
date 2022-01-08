@@ -50,20 +50,6 @@ namespace ModernComputerTechnologies {
             Console.WriteLine($"Sorted array <QuickSort>: time = {stopWatch.Elapsed.Minutes}m:{stopWatch.Elapsed.Seconds}s:{stopWatch.Elapsed.Milliseconds}ms\t default time = {stopWatch.Elapsed}");
         }
 
-
-        /// <summary>
-        /// Рандомное заполение массива, диапазон от 0 до arrayLength * 25
-        /// </summary>
-        /// <param name="array">массив</param>
-        /// <param name="arrayLength">длина массива</param>
-        internal static void FillRandom(int[] array, int arrayLength) {
-            Random randNum = new Random();
-            int maxValue = arrayLength * 25;
-            for (int i = 0; i < arrayLength; i++) {
-                array[i] = randNum.Next(0, maxValue);
-            }
-        }
-
         #endregion
 
         #region BubbleSort, InsertSort, QuickSort
@@ -113,8 +99,7 @@ namespace ModernComputerTechnologies {
         static void QuickSort(int[] array, int indexLow, int indexHigh) {
             int pivotIndex = FindPivot(array, indexLow, indexHigh);
             if (pivotIndex != -1) {
-                int pivot = array[pivotIndex];
-                int k = Partition(array, indexLow, indexHigh, pivot);
+                int k = Partition(array, indexLow, indexHigh, array[pivotIndex]);
                 QuickSort(array, indexLow, k - 1);
                 QuickSort(array, k, indexHigh);
             }
