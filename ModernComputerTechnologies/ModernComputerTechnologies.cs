@@ -13,7 +13,7 @@ namespace ModernComputerTechnologies {
 
         static void Main(string[] args) {
 
-            int arrayLength = 10000;
+            int arrayLength = 100000;
 
             int[] initialArray = new int[arrayLength];
 
@@ -21,18 +21,19 @@ namespace ModernComputerTechnologies {
             Console.WriteLine($"Array lenght = {arrayLength}\n");
             //Console.WriteLine($"Unsorted array:\n{string.Join(" ,", initialArray.ToArray())}\n");
 
-            Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.BubbleSort);
-            Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.InsertSort);
-            Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.QuickSort);
-            
-            
-            /*Stopwatch tmp = new Stopwatch();
-            int[] tmp2 = (int[])initialArray.Clone();
-            tmp.Start();
-            Array.Sort(tmp2);
-            tmp.Stop();
-            tmp2[0] = 0;*/
+            #region Old Implementation
+            //Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.BubbleSort);
+            //Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.InsertSort);
+            //Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.QuickSort);
+            #endregion
 
+            Thread threadBubbleSort = new Thread(Task1.ThreadBubbleSort);
+            threadBubbleSort.Start(initialArray.Clone());
+            Thread threadInsertSort = new Thread(Task1.ThreadInsertSort);
+            threadInsertSort.Start(initialArray.Clone());
+            Thread threadQuickSort = new Thread(Task1.ThreadQuickSort);
+            threadQuickSort.Start(initialArray.Clone());
+            
             Console.ReadKey();
         }
 
