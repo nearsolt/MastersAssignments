@@ -20,7 +20,7 @@ namespace ModernComputerTechnologies {
             stopWatch.Start();
             Task1.BubbleSort((int[])array);
             stopWatch.Stop();
-            //Console.WriteLine($"Sorted array <{BubbleSort}>: {string.Join(" ,", array.ToArray())}");
+            //Console.WriteLine($"Sorted array <BubbleSort>: {string.Join(" ,", array.ToArray())}");
             Console.WriteLine($"Sorted array <BubbleSort>: time = {stopWatch.Elapsed.Minutes}m:{stopWatch.Elapsed.Seconds}s:{stopWatch.Elapsed.Milliseconds}ms\t default time = {stopWatch.Elapsed}");
         }
 
@@ -33,7 +33,7 @@ namespace ModernComputerTechnologies {
             stopWatch.Start();
             Task1.InsertSort((int[])array);
             stopWatch.Stop();
-            //Console.WriteLine($"Sorted array <{InsertSort}>: {string.Join(" ,", array.ToArray())}");
+            //Console.WriteLine($"Sorted array <InsertSort>: {string.Join(" ,", array.ToArray())}");
             Console.WriteLine($"Sorted array <InsertSort>: time = {stopWatch.Elapsed.Minutes}m:{stopWatch.Elapsed.Seconds}s:{stopWatch.Elapsed.Milliseconds}ms\t default time = {stopWatch.Elapsed}");
         }
 
@@ -46,7 +46,7 @@ namespace ModernComputerTechnologies {
             stopWatch.Start();
             Task1.QuickSort((int[])array);
             stopWatch.Stop();
-            //Console.WriteLine($"Sorted array <{QuickSort}>: {string.Join(" ,", array.ToArray())}");
+            //Console.WriteLine($"Sorted array <QuickSort>: {string.Join(" ,", array.ToArray())}");
             Console.WriteLine($"Sorted array <QuickSort>: time = {stopWatch.Elapsed.Minutes}m:{stopWatch.Elapsed.Seconds}s:{stopWatch.Elapsed.Milliseconds}ms\t default time = {stopWatch.Elapsed}");
         }
 
