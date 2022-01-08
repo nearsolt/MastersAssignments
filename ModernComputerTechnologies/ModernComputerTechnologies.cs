@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace ModernComputerTechnologies {
     class ModernComputerTechnologies {
@@ -12,13 +13,13 @@ namespace ModernComputerTechnologies {
 
         static void Main(string[] args) {
 
-            int arrayLength = 100000;
+            int arrayLength = 10000;
 
             int[] initialArray = new int[arrayLength];
 
             Task1.FillRandom(initialArray, arrayLength);
-            Console.WriteLine(string.Format("Array lenght = {0}{1}", arrayLength, Environment.NewLine));
-            //Console.WriteLine(string.Format("Unsorted array:{0}{1}{0}", Environment.NewLine, string.Join(" ,", initialArray.ToArray())));
+            Console.WriteLine($"Array lenght = {arrayLength}\n");
+            //Console.WriteLine($"Unsorted array:\n{string.Join(" ,", initialArray.ToArray())}\n");
 
             Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.BubbleSort);
             Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.InsertSort);

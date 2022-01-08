@@ -58,8 +58,8 @@ namespace ModernComputerTechnologies {
                 default:
                     return;
             }
-            Console.WriteLine(string.Format("Sorted array ({0}): time = {1}", sortType, stopWatch.Elapsed));
-            //Console.WriteLine(string.Format(string.Join(" ,", array.ToArray())));
+            Console.WriteLine($"Sorted array <{sortType}>: time = {stopWatch.Elapsed.Minutes}m:{stopWatch.Elapsed.Seconds}s:{stopWatch.Elapsed.Milliseconds}ms\t default time = {stopWatch.Elapsed}");
+            //Console.WriteLine($"Sorted array <{sortType}>: {string.Join(" ,", array.ToArray())}");
         }
 
         #endregion
