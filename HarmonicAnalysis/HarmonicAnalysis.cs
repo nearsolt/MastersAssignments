@@ -15,35 +15,18 @@ namespace HarmonicAnalysis {
                                                     new Complex(4, -1), new Complex(6, 2), new Complex(3, -9), new Complex(-5, 8) };
 
             if (!Helpers.IsPowerOfTwo(initialArray.Length)) {
-                Console.WriteLine(string.Format("Количество элементов массива {0} равно {1}, что не является степенью двойки, введите корректные данные",
-                                                nameof(initialArray), initialArray.Length));
+                Console.WriteLine($"Количество элементов массива {nameof(initialArray)} равно {initialArray.Length}, что не является степенью двойки, введите корректные данные");
                 Console.ReadKey();
                 return;
             }
-            Console.WriteLine(string.Format("Входные значения ({0}): {1}{2}{1}",
-                                                nameof(initialArray), Environment.NewLine, string.Join(" ,", initialArray.ToArray())));
 
+            Console.WriteLine($"Входные значения ({nameof(initialArray)}):\n{string.Join(" ,", initialArray.ToArray())}\n");
 
-            Complex[] FFTArray = Helpers.FFT((Complex[])initialArray.Clone(), initialArray.Length);
-            Console.WriteLine(string.Format("Значения, полученные после быстрого преобразования Фурье ({0}): {1}{2}{1}",
-                                                nameof(FFTArray), Environment.NewLine, string.Join(" ,", FFTArray.ToArray())));
+            Complex[] FFTArray = Helpers.FFT((Complex[])initialArray.Clone());
+            Console.WriteLine($"Значения, полученные после БПФ ({nameof(FFTArray)}):\n{string.Join(" ,", FFTArray.ToArray())}\n");
 
-            /*Complex[] IFFTArray = Helpers.FFT(FFTArray, FFTArray.Length, true);
-            Console.WriteLine(string.Format("Значения, полученные после обратного быстрого преобразования Фурье ({0}): {1}{2}{1}",
-                                                nameof(IFFTArray), Environment.NewLine, string.Join(" ,", IFFTArray.ToArray())));
-            */
-
-
-            Complex[] FFTAlArray = Helpers.FFTAl((Complex[])initialArray.Clone());
-
-            Console.WriteLine(string.Format("Значения, полученные после быстрого преобразования Фурье ({0}): {1}{2}{1}",
-                                               nameof(FFTAlArray), Environment.NewLine, string.Join(" ,", FFTAlArray.ToArray())));
-
-
-            Complex[] IFFTAlArray = Helpers.IFFTAl((Complex[])FFTAlArray.Clone());
-
-            Console.WriteLine(string.Format("Значения, полученные после обратного быстрого преобразования Фурье ({0}): {1}{2}{1}",
-                                                nameof(IFFTAlArray), Environment.NewLine, string.Join(" ,", IFFTAlArray.ToArray())));
+            Complex[] IFFTArray = Helpers.FFT((Complex[])FFTArray.Clone(), true);
+            Console.WriteLine($"Значения, полученные после обратного БПФ ({nameof(IFFTArray)}):\n{string.Join(" ,", IFFTArray.ToArray())}\n");
 
             Console.ReadLine();
         }
