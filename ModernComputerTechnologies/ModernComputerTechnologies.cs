@@ -10,7 +10,7 @@ namespace ModernComputerTechnologies {
     class ModernComputerTechnologies {
 
         #region task1: 
-
+#if false
         static void Main(string[] args) {
 
             int arrayLength = 100000;
@@ -21,11 +21,11 @@ namespace ModernComputerTechnologies {
             Console.WriteLine($"Array lenght = {arrayLength}\n");
             //Console.WriteLine($"Unsorted array:\n{string.Join(" ,", initialArray.ToArray())}\n");
 
-            #region Old Implementation
+        #region Old Implementation
             //Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.BubbleSort);
             //Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.InsertSort);
             //Task1.SortResult((int[])initialArray.Clone(), Task1.SortType.QuickSort);
-            #endregion
+        #endregion
 
             Thread threadBubbleSort = new Thread(Task1.ThreadBubbleSort);
             threadBubbleSort.Start(initialArray.Clone());
@@ -33,18 +33,37 @@ namespace ModernComputerTechnologies {
             threadInsertSort.Start(initialArray.Clone());
             Thread threadQuickSort = new Thread(Task1.ThreadQuickSort);
             threadQuickSort.Start(initialArray.Clone());
-            
+
             Console.ReadKey();
         }
-
+#endif
         #endregion
 
 
         #region task2: 
+#if false
+        static void Main(string[] args) {
+
+            int fstArrayLength = 5;
+            int sndArrayLength = 6;
+            int[] resultArray = new int[fstArrayLength + sndArrayLength];
+            Task2.ArrayMerge(resultArray, fstArrayLength, sndArrayLength);
+
+            Console.ReadKey();
+        }
+#endif
         #endregion
 
 
         #region task3: 
+#if true
+        static void Main(string[] args) {
+
+            
+
+            Console.ReadKey();
+        }
+#endif
         #endregion
 
     }
