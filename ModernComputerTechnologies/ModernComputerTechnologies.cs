@@ -46,8 +46,21 @@ namespace ModernComputerTechnologies {
 
             int fstArrayLength = 5;
             int sndArrayLength = 6;
+
             int[] resultArray = new int[fstArrayLength + sndArrayLength];
-            Task2.ArrayMerge(resultArray, fstArrayLength, sndArrayLength);
+            int[] fstArray = new int[fstArrayLength];
+            int[] sndArray = new int[sndArrayLength];
+
+            Helpers.FillRandom(fstArray, fstArrayLength);
+            Array.Sort(fstArray);
+            //Console.WriteLine($"Sorted {nameof(fstArray)}:\n{string.Join(" ,", fstArray.ToArray())}\n");
+
+            Helpers.FillRandom(sndArray, sndArrayLength);
+            Array.Sort(sndArray);
+            //Console.WriteLine($"Sorted {nameof(sndArray)}:\n{string.Join(" ,", sndArray.ToArray())}\n");
+
+            Task2.ArrayMerge(resultArray, fstArray, sndArray);
+            //Console.WriteLine($"{nameof(resultArray)}:\n{string.Join(" ,", resultArray.ToArray())}\n");
 
             Console.ReadKey();
         }
@@ -60,7 +73,6 @@ namespace ModernComputerTechnologies {
         static void Main(string[] args) {
 
             
-
             Console.ReadKey();
         }
 #endif
