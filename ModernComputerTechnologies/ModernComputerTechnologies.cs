@@ -72,11 +72,11 @@ namespace ModernComputerTechnologies {
 #if true
         static void Main(string[] args) {
 
-            int matrixDim_Ox_1 = 3;
-            int matrixDim_Ox_2 = 4;
-            int arrayLength = matrixDim_Ox_1 * matrixDim_Ox_2;
+            int matrixLengthOx_1 = 3;
+            int matrixLengthOx_2 = 4;
+            int arrayLength = matrixLengthOx_1 * matrixLengthOx_2;
 
-            int[,] matrix = new int[matrixDim_Ox_1, matrixDim_Ox_2];
+            int[,] matrix = new int[matrixLengthOx_1, matrixLengthOx_2];
             int[] array = new int[arrayLength];
             int[] resultArray = new int[arrayLength];
 
