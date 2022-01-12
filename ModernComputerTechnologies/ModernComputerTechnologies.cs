@@ -72,11 +72,43 @@ namespace ModernComputerTechnologies {
 #if true
         static void Main(string[] args) {
 
-            
+            int matrixDim_Ox_1 = 4;
+            int matrixDim_Ox_2 = 5;
+            int arrayLength = matrixDim_Ox_1 * matrixDim_Ox_2;
+
+            int[,] matrix = new int[matrixDim_Ox_1, matrixDim_Ox_2];
+            int[] array = new int[arrayLength];
+            int[] resultArray = new int[arrayLength];
+
+            Helpers.FillArrayWithSequence(array);
+            Console.WriteLine($"\n{nameof(array)}: ");
+            Helpers.PrintArray(array);
+
+#if true           
+
+            Task3.SpiralAlgorithmArrayToMaxrix(matrix, array);
+            Console.WriteLine($"\n\n{nameof(matrix)}: ");
+            Helpers.PrintMatrix(matrix);         
+
+            Task3.SpiralAlgorithmMaxrixToArray(matrix, resultArray);
+            Console.WriteLine($"\n{nameof(resultArray)}: ");
+            Helpers.PrintArray(resultArray);
+#endif
+
+#if false
+            Task3.SpiralAlgorithmArrayToMaxrix(matrix, array);
+            Console.WriteLine($"\n\n{nameof(matrix)}: ");
+            Helpers.PrintMatrix(matrix);
+
+            Task3.SpiralAlgorithmMaxrixToArray(matrix, resultArray);
+            Console.WriteLine($"\n{nameof(resultArray)}: ");
+            Helpers.PrintArray(resultArray);
+#endif
+
             Console.ReadKey();
         }
 #endif
-        #endregion
+#endregion
 
-    }
+        }
 }
