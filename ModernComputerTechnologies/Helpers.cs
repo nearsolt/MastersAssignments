@@ -21,6 +21,18 @@ namespace ModernComputerTechnologies {
         }
 
         /// <summary>
+        /// Рандомное заполение массива, диапазон от 0 до arrayLength * 2
+        /// </summary>
+        /// <param name="array">массив</param>
+        internal static void FillRandom_x2(int[] array) {
+            Random randNum = new Random();
+            int maxValue = array.Length * 2;
+            for (int i = 0; i < array.Length; i++) {
+                array[i] = randNum.Next(0, maxValue);
+            }
+        }
+
+        /// <summary>
         /// Заполнение массива последовательностью чисел i=0, array.Length - 1
         /// </summary>
         /// <param name="array">массив</param>

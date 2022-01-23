@@ -53,14 +53,14 @@ namespace ModernComputerTechnologies {
 
             Helpers.FillRandom(fstArray, fstArrayLength);
             Array.Sort(fstArray);
-            //Console.WriteLine($"Sorted {nameof(fstArray)}:\n{string.Join(" ,", fstArray.ToArray())}\n");
+            Console.WriteLine($"Sorted {nameof(fstArray)}:\n{string.Join(" ,", fstArray.ToArray())}\n");
 
             Helpers.FillRandom(sndArray, sndArrayLength);
             Array.Sort(sndArray);
-            //Console.WriteLine($"Sorted {nameof(sndArray)}:\n{string.Join(" ,", sndArray.ToArray())}\n");
+            Console.WriteLine($"Sorted {nameof(sndArray)}:\n{string.Join(" ,", sndArray.ToArray())}\n");
 
             Task2.ArrayMerge(resultArray, fstArray, sndArray);
-            //Console.WriteLine($"{nameof(resultArray)}:\n{string.Join(" ,", resultArray.ToArray())}\n");
+            Console.WriteLine($"{nameof(resultArray)}:\n{string.Join(" ,", resultArray.ToArray())}\n");
 
             Console.ReadKey();
         }
@@ -80,7 +80,7 @@ namespace ModernComputerTechnologies {
             int[] array = new int[arrayLength];
             int[] resultArray = new int[arrayLength];
 
-            Helpers.FillArrayWithSequence(array);
+            Helpers.FillRandom_x2(array);
             Console.WriteLine($"\n{nameof(array)}: ");
             Helpers.PrintArray(array);
 
