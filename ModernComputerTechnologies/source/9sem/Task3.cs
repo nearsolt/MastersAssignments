@@ -16,6 +16,7 @@ namespace ModernComputerTechnologies {
 
             int matrixLengthOx_1 = matrix.GetLength(0);
             int matrixLengthOx_2 = matrix.GetLength(1);
+            int arrayLength = array.Length;
 
             // index - стартовый индекс массива
             int index = 0;
@@ -23,92 +24,36 @@ namespace ModernComputerTechnologies {
             int row = 0;
             int col = 0;
 
-            // флаг true - увеличение значения для строки, false - для столбца
-            bool row_inc = false;
+            array[index++] = matrix[row, col];
 
-            int min = Math.Min(matrixLengthOx_1, matrixLengthOx_2);
-            for (int len = 1; len <= min; len++) {
-                for (int i = 0; i < len; i++) {
-                    array[index++] = matrix[row, col];
-                    //Console.Write($"{matrix[row, col]} ");
-
-                    if (i + 1 == len)
-                        break;
-
-                    if (row_inc) {
-                        row++;
-                        col--;
-                    } else {
-                        row--;
-                        col++;
-                    }
+            while (index < arrayLength) {
+                if (col < matrixLengthOx_2 - 1) {
+                    col++;
+                } else {
+                    row++;
                 }
 
-                if (len == min)
-                    break;
-
-                if (row_inc) {
+                while (row < matrixLengthOx_1 && col >= 0) {
+                    array[index++] = matrix[row, col];
                     row++;
-                    row_inc = false;
+                    col--;
+                }
+                row--;
+                col++;
+
+                if (row < matrixLengthOx_1 - 1) {
+                    row++;
                 } else {
                     col++;
-                    row_inc = true;
                 }
-            }
 
-            if (row == 0) {
-                if (col == matrixLengthOx_2 - 1)
-                    row++;
-                else
-                    col++;
-                row_inc = true;
-            } else {
-                if (row == matrixLengthOx_1 - 1)
-                    col++;
-                else
-                    row++;
-                row_inc = false;
-            }
-
-            int max = Math.Max(matrixLengthOx_1, matrixLengthOx_2) - 1;
-            for (int len, diag = max; diag > 0; diag--) {
-
-                if (diag > min)
-                    len = min;
-                else
-                    len = diag;
-
-                for (int i = 0; i < len; i++) {
+                while (row >= 0 && col < matrixLengthOx_2) {
                     array[index++] = matrix[row, col];
-                    //Console.Write($"{matrix[row, col]} ");
-
-                    if (i + 1 == len)
-                        break;
-
-                    if (row_inc) {
-                        row++;
-                        col--;
-                    } else {
-                        col++;
-                        row--;
-                    }
+                    row--;
+                    col++;
                 }
-
-                if (row == 0 || col == matrixLengthOx_2 - 1) {
-                    if (col == matrixLengthOx_2 - 1)
-                        row++;
-                    else
-                        col++;
-
-                    row_inc = true;
-                } else if (col == 0 || row == matrixLengthOx_1 - 1) {
-                    if (row == matrixLengthOx_1 - 1)
-                        col++;
-                    else
-                        row++;
-
-                    row_inc = false;
-                }
+                row++;
+                col--;
             }
         }
 
