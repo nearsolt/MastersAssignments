@@ -8,26 +8,15 @@ namespace ModernComputerTechnologies {
     class Helpers {
 
         /// <summary>
-        /// Рандомное заполение массива, диапазон от 0 до arrayLength * 25
+        /// Рандомное заполение массива, диапазон от 0 до arrayLength * coeff
         /// </summary>
         /// <param name="array">массив</param>
         /// <param name="arrayLength">длина массива</param>
-        internal static void FillRandom(int[] array, int arrayLength) {
+        /// <param name="coeff">коэффициент</param>
+        internal static void FillRandom(int[] array, int arrayLength, int coeff) {
             Random randNum = new Random();
-            int maxValue = arrayLength * 25;
+            int maxValue = arrayLength * coeff;
             for (int i = 0; i < arrayLength; i++) {
-                array[i] = randNum.Next(0, maxValue);
-            }
-        }
-
-        /// <summary>
-        /// Рандомное заполение массива, диапазон от 0 до arrayLength * 2
-        /// </summary>
-        /// <param name="array">массив</param>
-        internal static void FillRandom_x2(int[] array) {
-            Random randNum = new Random();
-            int maxValue = array.Length * 2;
-            for (int i = 0; i < array.Length; i++) {
                 array[i] = randNum.Next(0, maxValue);
             }
         }
@@ -63,6 +52,5 @@ namespace ModernComputerTechnologies {
                 }
             }
         }
-
     }
 }

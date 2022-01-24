@@ -17,7 +17,7 @@ namespace ModernComputerTechnologies {
 
             int[] initialArray = new int[arrayLength];
 
-            Helpers.FillRandom(initialArray, arrayLength);
+            Helpers.FillRandom(initialArray, arrayLength, 25);
             Console.WriteLine($"Array lenght = {arrayLength}\n");
             //Console.WriteLine($"Unsorted array:\n{string.Join(" ,", initialArray.ToArray())}\n");
 
@@ -51,11 +51,11 @@ namespace ModernComputerTechnologies {
             int[] fstArray = new int[fstArrayLength];
             int[] sndArray = new int[sndArrayLength];
 
-            Helpers.FillRandom(fstArray, fstArrayLength);
+            Helpers.FillRandom(fstArray, fstArrayLength, 25);
             Array.Sort(fstArray);
             Console.WriteLine($"Sorted {nameof(fstArray)}:\n{string.Join(" ,", fstArray.ToArray())}\n");
 
-            Helpers.FillRandom(sndArray, sndArrayLength);
+            Helpers.FillRandom(sndArray, sndArrayLength, 25);
             Array.Sort(sndArray);
             Console.WriteLine($"Sorted {nameof(sndArray)}:\n{string.Join(" ,", sndArray.ToArray())}\n");
 
@@ -80,7 +80,7 @@ namespace ModernComputerTechnologies {
             int[] array = new int[arrayLength];
             int[] resultArray = new int[arrayLength];
 
-            Helpers.FillRandom_x2(array);
+            Helpers.FillRandom(array, arrayLength, 2);
             Console.WriteLine($"\n{nameof(array)}: ");
             Helpers.PrintArray(array);
 
