@@ -51,8 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="source\" />
     <Folder Include="tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="source\WalshMatrix_py.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
