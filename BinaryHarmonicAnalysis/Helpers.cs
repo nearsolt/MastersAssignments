@@ -87,7 +87,7 @@ namespace BinaryHarmonicAnalysis {
         /// <param name="walshMatrix">матрица Уолша</param>
         /// <param name="partitionsNumber">размерность матрицы Уолша</param>
         internal static void PrintWalshMatrix(int[,] walshMatrix, int partitionsNumber) {
-            Console.WriteLine(string.Format("Матрица Уолша, Mat:{0}x{0}, имеет вид:{1}", partitionsNumber, Environment.NewLine));
+            Console.WriteLine($"Матрица Уолша, Mat:{partitionsNumber}x{partitionsNumber}, имеет вид:\n");
             for (int i = 0; i < partitionsNumber; i++, Console.WriteLine("")) {
                 for (int j = 0; j < partitionsNumber; j++, Console.Write("\t")) {
                     Console.Write(walshMatrix[i, j].ToString());

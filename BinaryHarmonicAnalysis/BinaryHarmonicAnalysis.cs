@@ -14,7 +14,7 @@ namespace BinaryHarmonicAnalysis {
             double start = 1, end = 33;
 
             if (powerOfTwo < 0) {
-                Console.WriteLine(string.Format("Степень числа не может быть отрицательной: {0} = {1}, введите корректные данные", nameof(powerOfTwo), powerOfTwo));
+                Console.WriteLine($"Степень числа не может быть отрицательной: {nameof(powerOfTwo)} = {powerOfTwo}, введите корректные данные");
                 Console.ReadKey();
                 return;
             }
@@ -28,9 +28,9 @@ namespace BinaryHarmonicAnalysis {
 
             double[] coeff = Helpers.CalcCoeff(walshMatrix, partitionsNumber, start, end);
 
-            Console.WriteLine(string.Format("{0}Коэффициенты разложения имеют следующий вид:{0}", Environment.NewLine));
+            Console.WriteLine($"\nКоэффициенты разложения имеют следующий вид:\n");
             for (int i = 0; i < partitionsNumber; i++) {
-                Console.WriteLine(string.Format("coeff({0}) = {1}", i, coeff[i]));
+                Console.WriteLine($"coeff({i}) = {coeff[i]}");
             }
             Console.ReadKey();
         }
