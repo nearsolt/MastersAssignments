@@ -49,10 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="source\VeselovA_118 Отчет по двоичному гармоническому анализу.pdf" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="tests\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="source\WalshMatrix_py.txt" />
   </ItemGroup>
