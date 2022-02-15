@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers.cs" />
+    <Compile Include="source\10sem\Task4.cs" />
     <Compile Include="source\9sem\Task2.cs" />
     <Compile Include="source\9sem\Task1.cs" />
     <Compile Include="ModernComputerTechnologies.cs" />

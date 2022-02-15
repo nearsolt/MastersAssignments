@@ -9,6 +9,7 @@ using System.Threading;
 namespace ModernComputerTechnologies {
     class ModernComputerTechnologies {
 
+        #region 9sem tasks
         #region task1: 
 #if false
         static void Main(string[] args) {
@@ -39,7 +40,6 @@ namespace ModernComputerTechnologies {
 #endif
         #endregion
 
-
         #region task2: 
 #if false
         static void Main(string[] args) {
@@ -67,9 +67,9 @@ namespace ModernComputerTechnologies {
 #endif
         #endregion
 
-
         #region task3: 
-#if true
+#if false
+
         static void Main(string[] args) {
 
             int matrixLengthOx_1 = 3;
@@ -104,6 +104,15 @@ namespace ModernComputerTechnologies {
         }
 #endif
         #endregion
+        #endregion
 
+        #region 10sem task
+#if true
+        static void Main(string[] args) {
+
+            Console.ReadKey();
+        }
+#endif
+        #endregion
     }
 }
