@@ -115,6 +115,37 @@ namespace BinaryHarmonicAnalysis {
             return coeff;
         }
 
+
+        /// <summary>
+        /// Вычисление матрицы Уолша в представлении Пэли без использования Радемахера
+        /// </summary>
+        /// <param name="walshMatrix">матрица Уолша</param>
+        /// <param name="powerOfTwo">степерь размерности по основанию 2</param>
+        /// <param name="partitionsNumber">размерность матрицы Уолша</param>
+        internal static void CalcWalshMatrixWithOutRad(int[,] walshMatrix, int powerOfTwo, int partitionsNumber) {
+            for (int k = 1; k <= powerOfTwo; k++) {
+                int dimTmpMatrix = Convert.ToInt32(Math.Pow(2, k));
+                int[,] tmpMatrix = new int[dimTmpMatrix, dimTmpMatrix];
+                int dimTmpMatrixPrev = dimTmpMatrix / 2;
+
+                if (k == 1) {
+                    walshMatrix[0, 0] = 1;
+                }
+
+                for (int i = 0; i < dimTmpMatrixPrev; i++) {
+                    for (int j = 0; j < dimTmpMatrixPrev; j++) {
+                        tmpMatrix[2 * i, j + dimTmpMatrixPrev] = tmpMatrix[2 * i, j] = walshMatrix[i, j];
+                        tmpMatrix[2 * i + 1, j] = walshMatrix[i, j];
+                        tmpMatrix[2 * i + 1, j + dimTmpMatrixPrev] = -1 * tmpMatrix[2 * i + 1, j];
+                    }
+                }
+                for (int i = 0; i < dimTmpMatrix; i++) {
+                    for (int j = 0; j < dimTmpMatrix; j++) {
+                        walshMatrix[i, j] = tmpMatrix[i, j];
+                    }
+                }
+            }
+        }
         #endregion
     }
 }
