@@ -26,12 +26,12 @@ namespace FastAlgorithms {
         /// <returns></returns>
         internal static double[] InPlaceFHWT(double[] array, int powerOfTwo) {
 
-            int tmpLength = array.Length;
             int marker = 1;
+            int condExpression = array.Length;
 
             for (int k = 0; k < powerOfTwo; k++) {
-                tmpLength /= 2;
-                for (int j = 0; j < tmpLength; j++) {
+                condExpression /= 2;
+                for (int j = 0; j < condExpression; j++) {
                     (array[2 * marker * j], array[2 * marker * j + marker]) = 
                         ((array[2 * marker * j] + array[2 * marker * j + marker]) / 2.0, (array[2 * marker * j] - array[2 * marker * j + marker]) / 2.0);
                 }
@@ -49,15 +49,15 @@ namespace FastAlgorithms {
         internal static double[] InPlaceFIHWT(double[] array, int powerOfTwo) {
 
             int marker = array.Length / 2;
-            int step = 1;
+            int condExpression = 1;
 
             for (int k = powerOfTwo; k > 0; k--) {
-                for (int j = 0; j < step; j++) {
+                for (int j = 0; j < condExpression; j++) {
                     (array[2 * marker * j], array[2 * marker * j + marker]) = 
                         (array[2 * marker * j] + array[2 * marker * j + marker], array[2 * marker * j] - array[2 * marker * j + marker]);
                 }
                 marker /= 2;
-                step *= 2;
+                condExpression *= 2;
             }
             return array;
         }
