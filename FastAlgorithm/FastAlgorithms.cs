@@ -11,8 +11,8 @@ namespace FastAlgorithms {
             #region task 1: Fast Haar Wavelet Transform/Fast Inverse Haar Wavelet Transform Main
 
             //double[] initialArray = new double[] { 10.6, 5.9, 24.1, 6.4, 4.9, 13.5, 10.3, 9.6 };
-            double[] initialArray = new double[] { 7, 3, 4, 10 };
-            //double[] initialArray = new double[] { 6, 12, 15, 15, 14, 12, 120, 116 };
+            //double[] initialArray = new double[] { 7, 3, 4, 10 };
+            double[] initialArray = new double[] { 6, 12, 15, 15, 14, 12, 120, 116 };
             int partitionsNumber = initialArray.Length;
 
             if (partitionsNumber == 1) {
@@ -29,11 +29,17 @@ namespace FastAlgorithms {
             
             Console.WriteLine($"Входные значения ({nameof(initialArray)}):\n{string.Join(", ", initialArray.ToArray())}.\n");
 
-            double[] FHWTArray = Helpers.InPlaceFHWT((double[])initialArray.Clone(), powerOfTwo);
-            Console.WriteLine($"Значения, полученные после БПХ ({nameof(FHWTArray)}):\n{string.Join(", ", FHWTArray.ToList())}.\n");
+            double[] inPlaceFHWTArray = Helpers.InPlaceFHWT((double[])initialArray.Clone(), powerOfTwo);
+            Console.WriteLine($"Значения, полученные после БПХ ({nameof(inPlaceFHWTArray)}):\n{string.Join(", ", inPlaceFHWTArray.ToArray())}.\n");
 
-            double[] FIHWTArray = Helpers.InPlaceFIHWT((double[])FHWTArray.Clone(), powerOfTwo);
-            Console.WriteLine($"Значения, полученные после обратного БПХ ({nameof(FIHWTArray)}):\n{string.Join(", ", FIHWTArray.ToList())}.\n");
+            double[] inPlaceFIHWTArray = Helpers.InPlaceFIHWT((double[])inPlaceFHWTArray.Clone(), powerOfTwo);
+            Console.WriteLine($"Значения, полученные после обратного БПХ ({nameof(inPlaceFIHWTArray)}):\n{string.Join(", ", inPlaceFIHWTArray.ToArray())}.\n");
+
+            double[] orderedFHWTArray = Helpers.OrderedFHWT((double[])initialArray.Clone(), powerOfTwo);
+            Console.WriteLine($"Значения, полученные после БПХ ({nameof(orderedFHWTArray)}):\n{string.Join(", ", orderedFHWTArray.ToArray())}.\n");
+
+            double[] orderedFIHWTArray = Helpers.OrderedFIHWT((double[])orderedFHWTArray.Clone(), powerOfTwo);
+            Console.WriteLine($"Значения, полученные после обратного БПХ ({nameof(orderedFIHWTArray)}):\n{string.Join(", ", orderedFIHWTArray.ToArray())}.\n");
 
             #endregion
 
