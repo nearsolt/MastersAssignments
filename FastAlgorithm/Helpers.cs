@@ -27,16 +27,15 @@ namespace FastAlgorithms {
         internal static double[] InPlaceFHWT(double[] array, int powerOfTwo) {
 
             int tmpLength = array.Length;
-            int gap = 2;
-            int increment = 1;
+            int marker = 1;
 
             for (int k = 0; k < powerOfTwo; k++) {
                 tmpLength /= 2;
                 for (int j = 0; j < tmpLength; j++) {
-                    (array[gap * j], array[gap * j + increment]) = ((array[gap * j] + array[gap * j + increment]) / 2.0, (array[gap * j] - array[gap * j + increment]) / 2.0);
+                    (array[2 * marker * j], array[2 * marker * j + marker]) = 
+                        ((array[2 * marker * j] + array[2 * marker * j + marker]) / 2.0, (array[2 * marker * j] - array[2 * marker * j + marker]) / 2.0);
                 }
-                increment = gap;
-                gap *= 2;
+                marker *= 2;              
             }
             return array;
         }
@@ -49,18 +48,15 @@ namespace FastAlgorithms {
         /// <returns></returns>
         internal static double[] InPlaceFIHWT(double[] array, int powerOfTwo) {
 
-            int tmpLength = array.Length;
-
-            int gap = tmpLength;
-            int increment = tmpLength/2;
+            int marker = array.Length / 2;
             int step = 1;
 
             for (int k = powerOfTwo; k > 0; k--) {
                 for (int j = 0; j < step; j++) {
-                    (array[gap * j], array[gap * j + increment]) = (array[gap * j] + array[gap * j + increment], array[gap * j] - array[gap * j + increment]);
+                    (array[2 * marker * j], array[2 * marker * j + marker]) = 
+                        (array[2 * marker * j] + array[2 * marker * j + marker], array[2 * marker * j] - array[2 * marker * j + marker]);
                 }
-                gap = increment;
-                increment /= 2;
+                marker /= 2;
                 step *= 2;
             }
             return array;
