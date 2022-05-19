@@ -10,7 +10,7 @@ namespace FastAlgorithms {
 
             #region task 1: Fast Haar Wavelet Transform/Fast Inverse Haar Wavelet Transform Main
 
-            //double[] initialArray = new double[] { 10.6, 5.9, 24.1, 6.4, 4.9, 13.5, 10.3, 9.6 };
+            //double[] initialArray = new double[] { 10.6, 5.8, 24.5, 6.5, 4.7, 13.7, 1.6, 9.6 };
             //double[] initialArray = new double[] { 7, 3, 4, 10 };
             double[] initialArray = new double[] { 6, 12, 15, 15, 14, 12, 120, 116 };
             int partitionsNumber = initialArray.Length;
