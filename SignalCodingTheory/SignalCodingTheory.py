@@ -20,7 +20,7 @@ def operator_L(x, n, k_0):
     return L
 
 def operator_A(x, n, k_0):
-    A = 0.0
+    A = 0
     for k in range(1, n+1):
         A += (function_s(x, n, k-1, k_0) + function_s(x, n, k, k_0)) * function_with_error(k*pi/n, n, k_0)
     return 0.5*A
