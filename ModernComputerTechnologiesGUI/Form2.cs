@@ -59,6 +59,29 @@ namespace ModernComputerTechnologiesGUI {
             }
         }
 
+        /// <summary>
+        /// Построение графика f(x) после обнуления коэффициентов c
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CreateGraphOfFunctionModifiedF(object sender, EventArgs e) {
+            this.chart1.Series[1].Points.Clear();
+            try {
+                numberN = Convert.ToInt32(numericUpDown1.Value);
+                arrayOfValuesX = new double[numberN + 1];
+                arrayOfFunctions = new double[numberN + 1];
+
+                Helpers.CalcArrayOfValuesX(arrayOfValuesX, numberN);
+                Helpers.CalcArrayOfFunctions(arrayOfValuesX, arrayOfFunctions, numberN);
+
+                //for (int j = 0; j < numberN + 1; j++) {
+                //    this.chart1.Series[0].Points.AddXY(arrayOfValuesX[j], arrayOfFunctions[j]);
+                //}
+            } catch (Exception ex) {
+                informationStringLabel.Text = $"Error: {ex.Message}.";
+            }
+        }
+
         #endregion
 
     }

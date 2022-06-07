@@ -206,7 +206,7 @@ namespace ModernComputerTechnologiesGUI {
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(42, 95);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 26);
+            this.checkBox2.Size = new System.Drawing.Size(91, 21);
             this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "Modified f";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -216,7 +216,7 @@ namespace ModernComputerTechnologiesGUI {
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(42, 58);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(109, 26);
+            this.checkBox1.Size = new System.Drawing.Size(87, 21);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Original f";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -240,16 +240,6 @@ namespace ModernComputerTechnologiesGUI {
             this.labelForPercent.Size = new System.Drawing.Size(35, 24);
             this.labelForPercent.TabIndex = 11;
             this.labelForPercent.Text = "%: ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(26, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 24);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Очистить графики:";
             // 
             // Form2
             // 
