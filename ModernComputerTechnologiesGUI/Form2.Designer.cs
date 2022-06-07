@@ -241,6 +241,16 @@ namespace ModernComputerTechnologiesGUI {
             this.labelForPercent.TabIndex = 11;
             this.labelForPercent.Text = "%: ";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(26, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 24);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Очистить графики:";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);

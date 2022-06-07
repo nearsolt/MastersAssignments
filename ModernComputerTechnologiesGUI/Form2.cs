@@ -10,18 +10,17 @@ using System.Windows.Forms;
 using System.Diagnostics;
 
 namespace ModernComputerTechnologiesGUI {
-    public partial class Form2 : Form {        
+    public partial class Form2 : Form {
         public Form2() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-
         private int numberN;
         private double[] arrayOfValuesX;
         private double[] arrayOfFunctions;
 
         private void button1_Click(object sender, EventArgs e) {
-            CreateGraphOfFunctionOriginalF(sender,e);
+            CreateGraphOfFunctionOriginalF(sender, e);
         }
 
 
@@ -57,9 +56,10 @@ namespace ModernComputerTechnologiesGUI {
                 }
             } catch (Exception ex) {
                 informationStringLabel.Text = $"Error: {ex.Message}.";
-            }         
+            }
         }
 
         #endregion
+
     }
 }

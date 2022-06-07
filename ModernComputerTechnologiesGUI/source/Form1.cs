@@ -23,9 +23,6 @@ namespace ModernComputerTechnologiesGUI {
             
             //Tuple<List<double>, List<double>> tmp = Helpers.Calc(n);
 
-            //for (int j = 0; j < n; j++) {
-            //    this.chart1.Series[0].Points.AddXY(tmp.Item1[j], tmp.Item2[j]);
-            //}
 
            
 
