@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace ModernComputerTechnologiesGUI {
     class Helpers {
@@ -51,6 +52,53 @@ namespace ModernComputerTechnologiesGUI {
 
         #region 
 
+        /// <summary>
+        /// Построение матрицы А, элементы которой e^(2*pi*i*j*k/N), система дискретных экспоненциальных функций (ДЭФ)
+        /// </summary>
+        /// <param name="matrixA">матрица A</param>
+        /// <param name="n">число разбиений N</param>
+        internal static void BuildMatrixA(Complex[,] matrixA, int n) {
+
+            for (int j = 0; j < n + 1; j++) {
+                for (int k = 0; k < n + 1; k++) {
+                    double arg = 2 * Math.PI * j * k / n;
+                    matrixA[j, k] = new Complex(Math.Cos(arg), Math.Sin(arg));
+                }
+            }
+        }
+
+        internal static void CalcCoeffC(Complex[] arrayOfCoeffC, Complex[,] matrixA, Complex[] arrayOfFunctions, int n){
+
+            for (int j = 0; j < n + 1; j++) {
+                for (int k = 0; k < n + 1; k++) {
+
+                    //arrayOfCoeffC[j] += arrayOfFunctions[k] * matrixA[j, k];
+                    bool inverse = false;
+                    double arg = 2 * Math.PI * j * k / n * (inverse ? 1 : -1);
+                    Complex qw = new Complex(Math.Cos(arg), Math.Sin(arg));
+                    arrayOfCoeffC[j] += arrayOfFunctions[k] * qw;
+                }
+                arrayOfCoeffC[j] /= Math.Sqrt(n);
+            }
+        }
+
+        internal static double[] Multiplication(Complex[] arrayOfCoeffC, Complex[,] matrixA,  int n) {
+            Complex[] moF = new Complex[n + 1];
+            double[] moFReal = new double[n + 1];
+            for (int j = 0; j < n + 1; j++) {
+                for (int k = 0; k < n + 1; k++) {
+                    bool inverse = true;
+                    double arg = 2 * Math.PI * j * k / n * (inverse ? 1 : -1);
+                    Complex qw = new Complex(Math.Cos(arg), Math.Sin(arg));
+                    moF[j] += arrayOfCoeffC[k] * qw;
+                    //moF[j] += arrayOfCoeffC[k] * qq;
+                }
+                moF[j] /= Math.Sqrt(n);
+                moFReal[j] = moF[j].Real;
+            }
+
+            return moFReal;
+        }
 
         #endregion
     }

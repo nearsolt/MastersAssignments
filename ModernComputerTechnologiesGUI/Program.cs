@@ -14,17 +14,6 @@ namespace ModernComputerTechnologiesGUI {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form2());
-
-            //int n = 5;
-            //List<double> x = new List<double>();
-            //List<double> f = new List<double>();
-
-            //for(int i = 0; i <= n; i++) {
-            //    x.Add(i);
-            //    f.Add(Helpers.FuncValues(i));
-            //}
-            //Console.WriteLine($"x: {string.Join(", ", x.ToList())}\n f: {string.Join(", ", f.ToList())}");
-            //Console.ReadLine();
         }
     }
 }
