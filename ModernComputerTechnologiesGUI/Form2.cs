@@ -16,32 +16,26 @@ namespace ModernComputerTechnologiesGUI {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-        private int numberN;
-        private double[] arrayOfValuesX;
-        private double[] arrayOfFunctions;
-        Complex[] arrayOfComplexFunctions;
+        
 
-        private void button1_Click(object sender, EventArgs e) {
+        #region buttons
+        private void button_generateComplexNum_Click(object sender, EventArgs e) {
 
         }
-
-
-        private void button2_Click(object sender, EventArgs e) {
+        private void button_plotChartOriginalF_Click(object sender, EventArgs e) {
             try {
                 CreateGraphOfFunctionOriginalF(sender, e);
                 string tmp = string.Empty;
                 foreach (double item in arrayOfFunctions) {
                     tmp += $"({item}, )";
                 }
-                informationStringLabel.Text = tmp;
+                label_infoString.Text = tmp;
             } catch (Exception ex) {
-                informationStringLabel.Text = $"Error: {ex.Message}.";
+                label_infoString.Text = $"Error: {ex.Message}.";
             }
 
         }
-
-
-        private void button3_Click(object sender, EventArgs e) {
+        private void button_plotChartModifiedF_Click(object sender, EventArgs e) {
             try {
                 CreateGraphOfFunctionModifiedF(sender, e);
 
@@ -57,34 +51,87 @@ namespace ModernComputerTechnologiesGUI {
                 foreach (Complex item in modF) {
                     tmp += $"({item}, ";
                 }
-                informationStringLabel.Text = tmp;
+                label_infoString.Text = tmp;
             } catch (Exception ex) {
-                informationStringLabel.Text = $"Error: {ex.Message}.";
+                label_infoString.Text = $"Error: {ex.Message}.";
             }
         }
-
-        private void button4_Click(object sender, EventArgs e) {
-            if (this.checkBox1.Checked) {
-                this.chart1.Series[0].Points.Clear();
-                this.checkBox1.Checked = false;
+        private void button_deleteCharts_Click(object sender, EventArgs e) {
+            if (this.checkBox_deleteChartsOfOriginalF.Checked) {
+                this.chart_mainChart.Series[0].Points.Clear();
+                this.checkBox_deleteChartsOfOriginalF.Checked = false;
             }
-            if (this.checkBox2.Checked) {
-                this.chart1.Series[1].Points.Clear();
-                this.checkBox2.Checked = false;
+            if (this.checkBox_deleteChartsOfModifiedF.Checked) {
+                this.chart_mainChart.Series[1].Points.Clear();
+                this.checkBox_deleteChartsOfModifiedF.Checked = false;
             }
         }
+        #endregion
+
+        #region radioButtons
+        private void radioButton_caseForComplexF_CheckedChanged(object sender, EventArgs e) {
+            if (this.radioButton_caseForComplexF.Checked) {
+                this.panel_initCondForComplexF.Enabled = true;
+                this.panel_initCondForComplexF.Visible = true;
+                this.panel_initCondForRealF.Enabled = false;
+                this.panel_initCondForRealF.Visible = false;
+            }
+        }
+        private void radioButton_caseForRealF_CheckedChanged(object sender, EventArgs e) {
+            if (this.radioButton_caseForRealF.Checked) {
+                this.panel_initCondForRealF.Enabled = true;
+                this.panel_initCondForRealF.Visible = true;
+                this.panel_initCondForComplexF.Enabled = false;
+                this.panel_initCondForComplexF.Visible = false;
+            }
+        }
+        private void checkBox_chartscustom_CheckedChanged(object sender, EventArgs e) {
+            if (this.checkBox_chartscustom.Checked) {
+                this.panel_initChartsType.Enabled = true;
+                this.panel_initChartsType.Visible = true;
+            } else {
+                this.panel_initChartsType.Enabled = false;
+                this.panel_initChartsType.Visible = false;
+                this.chart_mainChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                this.chart_mainChart.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            }
+        }
+        private void radioButton_chartsTypeSpline_CheckedChanged(object sender, EventArgs e) {
+            if (this.radioButton_chartsTypeSpline.Checked) {
+                this.chart_mainChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                this.chart_mainChart.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            }
+        }
+        private void radioButton_chartsTypeLine_CheckedChanged(object sender, EventArgs e) {
+            if (this.radioButton_chartsTypeLine.Checked) {
+                this.chart_mainChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                this.chart_mainChart.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            }
+        }
+        private void radioButton_chartsTypePoint_CheckedChanged(object sender, EventArgs e) {
+            if (this.radioButton_chartsTypePoint.Checked) {
+                this.chart_mainChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+                this.chart_mainChart.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            }
+        }
+        #endregion
 
 
-        #region
+        private int numberN;
+        private double[] arrayOfValuesX;
+        private double[] arrayOfFunctions;
+        Complex[] arrayOfComplexFunctions;
+
+        #region Build charts
         /// <summary>
         /// Построение графика f(x) до обнуления коэффициентов c
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CreateGraphOfFunctionOriginalF(object sender, EventArgs e) {
-            this.chart1.Series[0].Points.Clear();
+            this.chart_mainChart.Series[0].Points.Clear();
             try {
-                numberN = Convert.ToInt32(numericUpDown1.Value);
+                numberN = Convert.ToInt32(numericUpDown_numN.Value);
                 arrayOfValuesX = new double[numberN + 1];
                 arrayOfFunctions = new double[numberN + 1];
 
@@ -92,10 +139,10 @@ namespace ModernComputerTechnologiesGUI {
                 Helpers.CalcArrayOfFunctions(arrayOfValuesX, arrayOfFunctions, numberN);
 
                 for (int j = 0; j < numberN + 1; j++) {
-                    this.chart1.Series[0].Points.AddXY(arrayOfValuesX[j], arrayOfFunctions[j]);
+                    this.chart_mainChart.Series[0].Points.AddXY(arrayOfValuesX[j], arrayOfFunctions[j]);
                 }
             } catch (Exception ex) {
-                informationStringLabel.Text = $"Error: {ex.Message}.";
+                label_infoString.Text = $"Error: {ex.Message}.";
             }
         }
         private double[] modF;
@@ -105,7 +152,7 @@ namespace ModernComputerTechnologiesGUI {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CreateGraphOfFunctionModifiedF(object sender, EventArgs e) {
-            this.chart1.Series[1].Points.Clear();
+            this.chart_mainChart.Series[1].Points.Clear();
             try {
 
                 Complex[,] matrixA = new Complex[numberN + 1, numberN + 1];
@@ -125,10 +172,10 @@ namespace ModernComputerTechnologiesGUI {
                 modF = Helpers.Multiplication(arrayOfCoeffC, matrixA, numberN);
 
                 for (int j = 0; j < numberN + 1; j++) {
-                    this.chart1.Series[1].Points.AddXY(arrayOfValuesX[j], modF[j]);
+                    this.chart_mainChart.Series[1].Points.AddXY(arrayOfValuesX[j], modF[j]);
                 }
             } catch (Exception ex) {
-                informationStringLabel.Text = $"Error: {ex.Message}.";
+                label_infoString.Text = $"Error: {ex.Message}.";
             }
         }
 
@@ -136,55 +183,10 @@ namespace ModernComputerTechnologiesGUI {
 
         #endregion
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e) {
-            if (this.radioButton1.Checked) {
-                this.panel6.Enabled = true;
-                this.panel6.Visible = true;
-                this.panel7.Enabled = false;
-                this.panel7.Visible = false;
-            }
-        }
+        
+        
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e) {
-            if (this.radioButton2.Checked) {
-                this.panel7.Enabled = true;
-                this.panel7.Visible = true;
-                this.panel6.Enabled = false;
-                this.panel6.Visible = false;
-            }
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e) {
-            if (this.checkBox3.Checked) {
-                this.panel5.Enabled = true;
-                this.panel5.Visible = true;
-            } else {
-                this.panel5.Enabled = false;
-                this.panel5.Visible = false;
-                this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-                this.chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            }
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e) {
-            if (this.radioButton3.Checked) {
-                this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-                this.chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            }
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e) {
-            if (this.radioButton4.Checked) {
-                this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                this.chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            }
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e) {
-            if (this.radioButton5.Checked) {
-                this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-                this.chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            }
-        }
+       
+        
     }
 }
