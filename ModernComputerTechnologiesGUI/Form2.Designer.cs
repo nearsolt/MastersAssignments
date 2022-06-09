@@ -35,7 +35,7 @@ namespace ModernComputerTechnologiesGUI {
             this.radioButton_caseForComplexF = new System.Windows.Forms.RadioButton();
             this.button_generateComplexNum = new System.Windows.Forms.Button();
             this.numericUpDown_numN = new System.Windows.Forms.NumericUpDown();
-            this.label_infoString = new System.Windows.Forms.Label();
+            this.label_infoString1 = new System.Windows.Forms.Label();
             this.button_plotChartOriginalF = new System.Windows.Forms.Button();
             this.numericUpDown_percent = new System.Windows.Forms.NumericUpDown();
             this.panel_deleteCharts = new System.Windows.Forms.Panel();
@@ -44,8 +44,6 @@ namespace ModernComputerTechnologiesGUI {
             this.checkBox_deleteChartsOfModifiedF = new System.Windows.Forms.CheckBox();
             this.checkBox_deleteChartsOfOriginalF = new System.Windows.Forms.CheckBox();
             this.button_plotChartModifiedF = new System.Windows.Forms.Button();
-            this.label_numN = new System.Windows.Forms.Label();
-            this.label_percent = new System.Windows.Forms.Label();
             this.panel_initPercent = new System.Windows.Forms.Panel();
             this.label_initPercent = new System.Windows.Forms.Label();
             this.panel_initNumN = new System.Windows.Forms.Panel();
@@ -65,10 +63,14 @@ namespace ModernComputerTechnologiesGUI {
             this.label_funcDefArea = new System.Windows.Forms.Label();
             this.groupBox_initCond = new System.Windows.Forms.GroupBox();
             this.groupBox_plotCharts = new System.Windows.Forms.GroupBox();
+            this.button_testClearInfo = new System.Windows.Forms.Button();
+            this.button_testButton = new System.Windows.Forms.Button();
             this.groupBox_advancedSettings = new System.Windows.Forms.GroupBox();
             this.chart_mainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox_mainChartAndInfoPanel = new System.Windows.Forms.GroupBox();
             this.panel_infoPanel = new System.Windows.Forms.Panel();
+            this.checkBox_debug = new System.Windows.Forms.CheckBox();
+            this.label_infoString2 = new System.Windows.Forms.Label();
             this.panel_choiceInitCond.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_percent)).BeginInit();
@@ -95,7 +97,7 @@ namespace ModernComputerTechnologiesGUI {
             this.panel_choiceInitCond.Controls.Add(this.radioButton_caseForComplexF);
             this.panel_choiceInitCond.Location = new System.Drawing.Point(9, 16);
             this.panel_choiceInitCond.Name = "panel_choiceInitCond";
-            this.panel_choiceInitCond.Size = new System.Drawing.Size(364, 104);
+            this.panel_choiceInitCond.Size = new System.Drawing.Size(364, 74);
             this.panel_choiceInitCond.TabIndex = 2;
             // 
             // label_choiceInitCond
@@ -111,7 +113,7 @@ namespace ModernComputerTechnologiesGUI {
             // radioButton_caseForRealF
             // 
             this.radioButton_caseForRealF.AutoSize = true;
-            this.radioButton_caseForRealF.Location = new System.Drawing.Point(43, 78);
+            this.radioButton_caseForRealF.Location = new System.Drawing.Point(186, 42);
             this.radioButton_caseForRealF.Name = "radioButton_caseForRealF";
             this.radioButton_caseForRealF.Size = new System.Drawing.Size(91, 21);
             this.radioButton_caseForRealF.TabIndex = 1;
@@ -133,7 +135,7 @@ namespace ModernComputerTechnologiesGUI {
             // button_generateComplexNum
             // 
             this.button_generateComplexNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_generateComplexNum.Location = new System.Drawing.Point(21, 13);
+            this.button_generateComplexNum.Location = new System.Drawing.Point(21, 7);
             this.button_generateComplexNum.Name = "button_generateComplexNum";
             this.button_generateComplexNum.Size = new System.Drawing.Size(320, 48);
             this.button_generateComplexNum.TabIndex = 3;
@@ -143,7 +145,7 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // numericUpDown_numN
             // 
-            this.numericUpDown_numN.Location = new System.Drawing.Point(54, 49);
+            this.numericUpDown_numN.Location = new System.Drawing.Point(246, 11);
             this.numericUpDown_numN.Maximum = new decimal(new int[] {
             200,
             0,
@@ -155,7 +157,7 @@ namespace ModernComputerTechnologiesGUI {
             0,
             0});
             this.numericUpDown_numN.Name = "numericUpDown_numN";
-            this.numericUpDown_numN.Size = new System.Drawing.Size(58, 22);
+            this.numericUpDown_numN.Size = new System.Drawing.Size(76, 22);
             this.numericUpDown_numN.TabIndex = 5;
             this.numericUpDown_numN.Value = new decimal(new int[] {
             10,
@@ -163,18 +165,20 @@ namespace ModernComputerTechnologiesGUI {
             0,
             0});
             // 
-            // label_infoString
+            // label_infoString1
             // 
-            this.label_infoString.AutoSize = true;
-            this.label_infoString.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_infoString.Location = new System.Drawing.Point(17, 17);
-            this.label_infoString.Name = "label_infoString";
-            this.label_infoString.Size = new System.Drawing.Size(0, 18);
-            this.label_infoString.TabIndex = 6;
+            this.label_infoString1.AutoSize = true;
+            this.label_infoString1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_infoString1.Location = new System.Drawing.Point(17, 9);
+            this.label_infoString1.MaximumSize = new System.Drawing.Size(880, 50);
+            this.label_infoString1.MinimumSize = new System.Drawing.Size(880, 50);
+            this.label_infoString1.Name = "label_infoString1";
+            this.label_infoString1.Size = new System.Drawing.Size(880, 50);
+            this.label_infoString1.TabIndex = 6;
             // 
             // button_plotChartOriginalF
             // 
-            this.button_plotChartOriginalF.Location = new System.Drawing.Point(140, 47);
+            this.button_plotChartOriginalF.Location = new System.Drawing.Point(149, 33);
             this.button_plotChartOriginalF.Name = "button_plotChartOriginalF";
             this.button_plotChartOriginalF.Size = new System.Drawing.Size(200, 30);
             this.button_plotChartOriginalF.TabIndex = 7;
@@ -184,9 +188,9 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // numericUpDown_percent
             // 
-            this.numericUpDown_percent.Location = new System.Drawing.Point(54, 48);
+            this.numericUpDown_percent.Location = new System.Drawing.Point(246, 44);
             this.numericUpDown_percent.Name = "numericUpDown_percent";
-            this.numericUpDown_percent.Size = new System.Drawing.Size(58, 22);
+            this.numericUpDown_percent.Size = new System.Drawing.Size(76, 22);
             this.numericUpDown_percent.TabIndex = 8;
             // 
             // panel_deleteCharts
@@ -243,7 +247,7 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // button_plotChartModifiedF
             // 
-            this.button_plotChartModifiedF.Location = new System.Drawing.Point(140, 47);
+            this.button_plotChartModifiedF.Location = new System.Drawing.Point(149, 83);
             this.button_plotChartModifiedF.Name = "button_plotChartModifiedF";
             this.button_plotChartModifiedF.Size = new System.Drawing.Size(200, 30);
             this.button_plotChartModifiedF.TabIndex = 2;
@@ -251,42 +255,20 @@ namespace ModernComputerTechnologiesGUI {
             this.button_plotChartModifiedF.UseVisualStyleBackColor = true;
             this.button_plotChartModifiedF.Click += new System.EventHandler(this.button_plotChartModifiedF_Click);
             // 
-            // label_numN
-            // 
-            this.label_numN.AutoSize = true;
-            this.label_numN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_numN.Location = new System.Drawing.Point(15, 49);
-            this.label_numN.Name = "label_numN";
-            this.label_numN.Size = new System.Drawing.Size(31, 20);
-            this.label_numN.TabIndex = 10;
-            this.label_numN.Text = "N: ";
-            // 
-            // label_percent
-            // 
-            this.label_percent.AutoSize = true;
-            this.label_percent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_percent.Location = new System.Drawing.Point(15, 48);
-            this.label_percent.Name = "label_percent";
-            this.label_percent.Size = new System.Drawing.Size(34, 20);
-            this.label_percent.TabIndex = 11;
-            this.label_percent.Text = "%: ";
-            // 
             // panel_initPercent
             // 
             this.panel_initPercent.Controls.Add(this.label_initPercent);
-            this.panel_initPercent.Controls.Add(this.button_plotChartModifiedF);
             this.panel_initPercent.Controls.Add(this.numericUpDown_percent);
-            this.panel_initPercent.Controls.Add(this.label_percent);
-            this.panel_initPercent.Location = new System.Drawing.Point(9, 107);
+            this.panel_initPercent.Location = new System.Drawing.Point(9, 289);
             this.panel_initPercent.Name = "panel_initPercent";
-            this.panel_initPercent.Size = new System.Drawing.Size(364, 86);
+            this.panel_initPercent.Size = new System.Drawing.Size(364, 76);
             this.panel_initPercent.TabIndex = 13;
             // 
             // label_initPercent
             // 
             this.label_initPercent.AutoSize = true;
             this.label_initPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_initPercent.Location = new System.Drawing.Point(10, 12);
+            this.label_initPercent.Location = new System.Drawing.Point(13, 15);
             this.label_initPercent.Name = "label_initPercent";
             this.label_initPercent.Size = new System.Drawing.Size(264, 18);
             this.label_initPercent.TabIndex = 12;
@@ -295,12 +277,10 @@ namespace ModernComputerTechnologiesGUI {
             // panel_initNumN
             // 
             this.panel_initNumN.Controls.Add(this.label_initNumN);
-            this.panel_initNumN.Controls.Add(this.button_plotChartOriginalF);
             this.panel_initNumN.Controls.Add(this.numericUpDown_numN);
-            this.panel_initNumN.Controls.Add(this.label_numN);
-            this.panel_initNumN.Location = new System.Drawing.Point(9, 13);
+            this.panel_initNumN.Location = new System.Drawing.Point(9, 96);
             this.panel_initNumN.Name = "panel_initNumN";
-            this.panel_initNumN.Size = new System.Drawing.Size(364, 86);
+            this.panel_initNumN.Size = new System.Drawing.Size(364, 41);
             this.panel_initNumN.TabIndex = 14;
             // 
             // label_initNumN
@@ -385,9 +365,9 @@ namespace ModernComputerTechnologiesGUI {
             // panel_initCondForComplexF
             // 
             this.panel_initCondForComplexF.Controls.Add(this.button_generateComplexNum);
-            this.panel_initCondForComplexF.Location = new System.Drawing.Point(9, 126);
+            this.panel_initCondForComplexF.Location = new System.Drawing.Point(9, 143);
             this.panel_initCondForComplexF.Name = "panel_initCondForComplexF";
-            this.panel_initCondForComplexF.Size = new System.Drawing.Size(364, 72);
+            this.panel_initCondForComplexF.Size = new System.Drawing.Size(364, 62);
             this.panel_initCondForComplexF.TabIndex = 15;
             this.panel_initCondForComplexF.Visible = false;
             // 
@@ -398,16 +378,16 @@ namespace ModernComputerTechnologiesGUI {
             this.panel_initCondForRealF.Controls.Add(this.numericUpDown_startOfInterval);
             this.panel_initCondForRealF.Controls.Add(this.label_startOfInterval);
             this.panel_initCondForRealF.Controls.Add(this.label_funcDefArea);
-            this.panel_initCondForRealF.Location = new System.Drawing.Point(9, 209);
+            this.panel_initCondForRealF.Location = new System.Drawing.Point(9, 211);
             this.panel_initCondForRealF.Name = "panel_initCondForRealF";
-            this.panel_initCondForRealF.Size = new System.Drawing.Size(364, 88);
+            this.panel_initCondForRealF.Size = new System.Drawing.Size(364, 69);
             this.panel_initCondForRealF.TabIndex = 16;
             this.panel_initCondForRealF.Visible = false;
             // 
             // numericUpDown_endOfInterval
             // 
             this.numericUpDown_endOfInterval.DecimalPlaces = 2;
-            this.numericUpDown_endOfInterval.Location = new System.Drawing.Point(246, 46);
+            this.numericUpDown_endOfInterval.Location = new System.Drawing.Point(246, 39);
             this.numericUpDown_endOfInterval.Minimum = new decimal(new int[] {
             100,
             0,
@@ -426,7 +406,7 @@ namespace ModernComputerTechnologiesGUI {
             // 
             this.label_endOfInterval.AutoSize = true;
             this.label_endOfInterval.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_endOfInterval.Location = new System.Drawing.Point(186, 46);
+            this.label_endOfInterval.Location = new System.Drawing.Point(186, 39);
             this.label_endOfInterval.Name = "label_endOfInterval";
             this.label_endOfInterval.Size = new System.Drawing.Size(43, 20);
             this.label_endOfInterval.TabIndex = 3;
@@ -435,7 +415,7 @@ namespace ModernComputerTechnologiesGUI {
             // numericUpDown_startOfInterval
             // 
             this.numericUpDown_startOfInterval.DecimalPlaces = 2;
-            this.numericUpDown_startOfInterval.Location = new System.Drawing.Point(83, 46);
+            this.numericUpDown_startOfInterval.Location = new System.Drawing.Point(83, 39);
             this.numericUpDown_startOfInterval.Minimum = new decimal(new int[] {
             100,
             0,
@@ -454,7 +434,7 @@ namespace ModernComputerTechnologiesGUI {
             // 
             this.label_startOfInterval.AutoSize = true;
             this.label_startOfInterval.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_startOfInterval.Location = new System.Drawing.Point(16, 46);
+            this.label_startOfInterval.Location = new System.Drawing.Point(16, 39);
             this.label_startOfInterval.Name = "label_startOfInterval";
             this.label_startOfInterval.Size = new System.Drawing.Size(50, 20);
             this.label_startOfInterval.TabIndex = 1;
@@ -472,27 +452,52 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // groupBox_initCond
             // 
+            this.groupBox_initCond.Controls.Add(this.panel_initPercent);
             this.groupBox_initCond.Controls.Add(this.panel_choiceInitCond);
+            this.groupBox_initCond.Controls.Add(this.panel_initNumN);
             this.groupBox_initCond.Controls.Add(this.panel_initCondForRealF);
             this.groupBox_initCond.Controls.Add(this.panel_initCondForComplexF);
             this.groupBox_initCond.Location = new System.Drawing.Point(14, -1);
             this.groupBox_initCond.Name = "groupBox_initCond";
-            this.groupBox_initCond.Size = new System.Drawing.Size(382, 307);
+            this.groupBox_initCond.Size = new System.Drawing.Size(382, 372);
             this.groupBox_initCond.TabIndex = 17;
             this.groupBox_initCond.TabStop = false;
             // 
             // groupBox_plotCharts
             // 
-            this.groupBox_plotCharts.Controls.Add(this.panel_initPercent);
-            this.groupBox_plotCharts.Controls.Add(this.panel_initNumN);
-            this.groupBox_plotCharts.Location = new System.Drawing.Point(14, 307);
+            this.groupBox_plotCharts.Controls.Add(this.button_testClearInfo);
+            this.groupBox_plotCharts.Controls.Add(this.button_testButton);
+            this.groupBox_plotCharts.Controls.Add(this.button_plotChartOriginalF);
+            this.groupBox_plotCharts.Controls.Add(this.button_plotChartModifiedF);
+            this.groupBox_plotCharts.Location = new System.Drawing.Point(14, 373);
             this.groupBox_plotCharts.Name = "groupBox_plotCharts";
-            this.groupBox_plotCharts.Size = new System.Drawing.Size(381, 203);
+            this.groupBox_plotCharts.Size = new System.Drawing.Size(381, 137);
             this.groupBox_plotCharts.TabIndex = 18;
             this.groupBox_plotCharts.TabStop = false;
             // 
+            // button_testClearInfo
+            // 
+            this.button_testClearInfo.Location = new System.Drawing.Point(22, 83);
+            this.button_testClearInfo.Name = "button_testClearInfo";
+            this.button_testClearInfo.Size = new System.Drawing.Size(110, 30);
+            this.button_testClearInfo.TabIndex = 9;
+            this.button_testClearInfo.Text = "ClearInfo";
+            this.button_testClearInfo.UseVisualStyleBackColor = true;
+            this.button_testClearInfo.Click += new System.EventHandler(this.button_testClearInfo_Click);
+            // 
+            // button_testButton
+            // 
+            this.button_testButton.Location = new System.Drawing.Point(22, 33);
+            this.button_testButton.Name = "button_testButton";
+            this.button_testButton.Size = new System.Drawing.Size(110, 30);
+            this.button_testButton.TabIndex = 8;
+            this.button_testButton.Text = "Test";
+            this.button_testButton.UseVisualStyleBackColor = true;
+            this.button_testButton.Click += new System.EventHandler(this.button_testButton_Click);
+            // 
             // groupBox_advancedSettings
             // 
+            this.groupBox_advancedSettings.Controls.Add(this.checkBox_debug);
             this.groupBox_advancedSettings.Controls.Add(this.panel_deleteCharts);
             this.groupBox_advancedSettings.Controls.Add(this.panel_initChartsType);
             this.groupBox_advancedSettings.Controls.Add(this.checkBox_chartscustom);
@@ -528,7 +533,7 @@ namespace ModernComputerTechnologiesGUI {
             series2.Name = "Modified f";
             this.chart_mainChart.Series.Add(series1);
             this.chart_mainChart.Series.Add(series2);
-            this.chart_mainChart.Size = new System.Drawing.Size(920, 640);
+            this.chart_mainChart.Size = new System.Drawing.Size(920, 608);
             this.chart_mainChart.TabIndex = 0;
             this.chart_mainChart.Text = "1";
             // 
@@ -544,11 +549,32 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // panel_infoPanel
             // 
-            this.panel_infoPanel.Controls.Add(this.label_infoString);
-            this.panel_infoPanel.Location = new System.Drawing.Point(6, 667);
+            this.panel_infoPanel.Controls.Add(this.label_infoString2);
+            this.panel_infoPanel.Controls.Add(this.label_infoString1);
+            this.panel_infoPanel.Location = new System.Drawing.Point(6, 630);
             this.panel_infoPanel.Name = "panel_infoPanel";
-            this.panel_infoPanel.Size = new System.Drawing.Size(919, 91);
+            this.panel_infoPanel.Size = new System.Drawing.Size(919, 128);
             this.panel_infoPanel.TabIndex = 1;
+            // 
+            // checkBox_debug
+            // 
+            this.checkBox_debug.AutoSize = true;
+            this.checkBox_debug.Location = new System.Drawing.Point(199, 14);
+            this.checkBox_debug.Name = "checkBox_debug";
+            this.checkBox_debug.Size = new System.Drawing.Size(72, 21);
+            this.checkBox_debug.TabIndex = 10;
+            this.checkBox_debug.Text = "Debug";
+            this.checkBox_debug.UseVisualStyleBackColor = true;
+            // 
+            // label_infoString2
+            // 
+            this.label_infoString2.AutoSize = true;
+            this.label_infoString2.Location = new System.Drawing.Point(17, 69);
+            this.label_infoString2.MaximumSize = new System.Drawing.Size(880, 50);
+            this.label_infoString2.MinimumSize = new System.Drawing.Size(880, 50);
+            this.label_infoString2.Name = "label_infoString2";
+            this.label_infoString2.Size = new System.Drawing.Size(880, 50);
+            this.label_infoString2.TabIndex = 7;
             // 
             // Form2
             // 
@@ -597,15 +623,13 @@ namespace ModernComputerTechnologiesGUI {
         private System.Windows.Forms.RadioButton radioButton_caseForComplexF;
         private System.Windows.Forms.Button button_generateComplexNum;
         private System.Windows.Forms.NumericUpDown numericUpDown_numN;
-        private System.Windows.Forms.Label label_infoString;
+        private System.Windows.Forms.Label label_infoString1;
         private System.Windows.Forms.Button button_plotChartOriginalF;
         private System.Windows.Forms.NumericUpDown numericUpDown_percent;
         private System.Windows.Forms.Panel panel_deleteCharts;
         private System.Windows.Forms.Button button_plotChartModifiedF;
         private System.Windows.Forms.CheckBox checkBox_deleteChartsOfModifiedF;
         private System.Windows.Forms.CheckBox checkBox_deleteChartsOfOriginalF;
-        private System.Windows.Forms.Label label_numN;
-        private System.Windows.Forms.Label label_percent;
         private System.Windows.Forms.Label label_deleteCharts;
         private System.Windows.Forms.Panel panel_initPercent;
         private System.Windows.Forms.Label label_initPercent;
@@ -632,5 +656,9 @@ namespace ModernComputerTechnologiesGUI {
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_mainChart;
         private System.Windows.Forms.GroupBox groupBox_mainChartAndInfoPanel;
         private System.Windows.Forms.Panel panel_infoPanel;
+        private System.Windows.Forms.Button button_testButton;
+        private System.Windows.Forms.Button button_testClearInfo;
+        private System.Windows.Forms.CheckBox checkBox_debug;
+        private System.Windows.Forms.Label label_infoString2;
     }
 }
