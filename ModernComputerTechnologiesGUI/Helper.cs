@@ -57,102 +57,111 @@ namespace ModernComputerTechnologiesGUI {
             return FTArray;
         }
 
-
-
-        #region Initial data and filling arrays of values
-
         /// <summary>
-        /// Построение матрицы А, элементы которой e^(2*pi*i*/N * j*k), система дискретных экспоненциальных функций (ДЭФ)
-        /// </summary>
-        /// <param name="matrixA">матрица A</param>
-        /// <param name="n">число разбиений N</param>
-        internal static void BuildMatrixA(Complex[,] matrixA, int numN) {
-
-            for (int j = 0; j < numN; j++) {
-                for (int k = 0; k < numN; k++) {
-                   // double arg = 2 * Math.PI * j * k / numN * ;
-                    //matrixA[j, k] = new Complex(Math.Cos(arg), Math.Sin(arg));
-                }
-            }
-        }
-
-        // Начало интервала
-        private static double intervalStart = 5;
-        // Конец интервала
-        private static double intervalEnd = 10;
-
-        /// <summary>
-        /// Получение значения функции в точке
+        /// Инициализация функции f
         /// </summary>
         /// <param name="value">точка</param>
         /// <returns></returns>
         private static double FuncValues(double value) {
-            return Math.Sin(value);
+            //return Math.Sin(value);
+            return Math.Pow(value,3)-3*value;
         }
 
         /// <summary>
         /// Заполнение массива значений X
         /// </summary>
-        /// <param name="arrayOfValuesX">массив значений X</param>
-        /// <param name="n">число разбиений N</param>
-        internal static void CalcArrayOfValuesX(double[] arrayOfValuesX, int n) {
-            double xAxisStep = (intervalEnd - intervalStart) / n;
-            arrayOfValuesX[0] = intervalStart;
-            arrayOfValuesX[n] = intervalEnd;
+        /// <param name="arrayOfValuesX">массив значений x</param>
+        /// <param name="numN">размерность массива</param>
+        /// <param name="startOfInterval">начальное значение</param>
+        /// <param name="endOfInterval">конечное значение</param>
+        internal static void CalcArrayOfValuesX(double[] arrayOfValuesX, int numN, double startOfInterval, double endOfInterval) {
+            double xAxisStep = (endOfInterval - startOfInterval) / numN;
+            arrayOfValuesX[0] = startOfInterval;
+            arrayOfValuesX[numN-1] = endOfInterval;
 
-            for (int j = 1; j < n; j++) {
+            for (int j = 1; j < numN-1; j++) {
                 arrayOfValuesX[j] = arrayOfValuesX[0] + j * xAxisStep;
             }
         }
         /// <summary>
         /// Заполнение массива функции
         /// </summary>
-        /// <param name="arrayOfValuesX">массив значений X</param>
+        /// <param name="arrayOfValuesX">массив значений x</param>
         /// <param name="arrayOfFunctions">массив функции</param>
-        /// <param name="n">число разбиений N</param>
-        internal static void CalcArrayOfFunctions(double[] arrayOfValuesX, double[] arrayOfFunctions, int n) {
-            for (int j = 0; j < n + 1; j++) {
+        /// <param name="numN">размерность массива</param>
+        internal static void CalcArrayOfFuncValues(double[] arrayOfValuesX, double[] arrayOfFunctions, int numN) {
+            for (int j = 0; j < numN; j++) {
                 arrayOfFunctions[j] = FuncValues(arrayOfValuesX[j]);
             }
         }
-        #endregion
 
-        #region 
+        
+        
+        
+        
+        #region Junk
+
+        ///// <summary>
+        ///// Построение матрицы А, элементы которой e^(2*pi*i*/N * j*k), система дискретных экспоненциальных функций (ДЭФ)
+        ///// </summary>
+        ///// <param name="matrixA">матрица A</param>
+        ///// <param name="n">число разбиений N</param>
+        // static void BuildMatrixA(Complex[,] matrixA, int numN) {
+
+        //    for (int j = 0; j < numN; j++) {
+        //        for (int k = 0; k < numN; k++) {
+        //           // double arg = 2 * Math.PI * j * k / numN * ;
+        //            //matrixA[j, k] = new Complex(Math.Cos(arg), Math.Sin(arg));
+        //        }
+        //    }
+        //}
+
+        ////// Начало интервала
+        ////private static double intervalStart = 5;
+        ////// Конец интервала
+        ////private static double intervalEnd = 10;
 
         
 
-        internal static void CalcCoeffC(Complex[] arrayOfCoeffC, Complex[,] matrixA, Complex[] arrayOfFunctions, int n) {
+        
+        //#endregion
 
-            for (int j = 0; j < n + 1; j++) {
-                for (int k = 0; k < n + 1; k++) {
+        //#region 
 
-                    //arrayOfCoeffC[j] += arrayOfFunctions[k] * matrixA[j, k];
-                    bool inverse = false;
-                    double arg = 2 * Math.PI * j * k / n * (inverse ? 1 : -1);
-                    Complex qw = new Complex(Math.Cos(arg), Math.Sin(arg));
-                    arrayOfCoeffC[j] += arrayOfFunctions[k] * qw;
-                }
-                arrayOfCoeffC[j] /= Math.Sqrt(n);
-            }
-        }
+        
 
-        internal static double[] Multiplication(Complex[] arrayOfCoeffC, Complex[,] matrixA, int n) {
-            Complex[] moF = new Complex[n + 1];
-            double[] moFReal = new double[n + 1];
-            for (int j = 0; j < n + 1; j++) {
-                for (int k = 0; k < n + 1; k++) {
-                    bool inverse = true;
-                    double arg = 2 * Math.PI * j * k / n * (inverse ? 1 : -1);
-                    Complex qw = new Complex(Math.Cos(arg), Math.Sin(arg));
-                    moF[j] += arrayOfCoeffC[k] * qw;
-                    //moF[j] += arrayOfCoeffC[k] * qq;
-                }
-                moF[j] /= Math.Sqrt(n);
-                moFReal[j] = moF[j].Real;
-            }
+        // static void CalcCoeffC(Complex[] arrayOfCoeffC, Complex[,] matrixA, Complex[] arrayOfFunctions, int n) {
 
-            return moFReal;
-        }
+        //    for (int j = 0; j < n + 1; j++) {
+        //        for (int k = 0; k < n + 1; k++) {
+
+        //            //arrayOfCoeffC[j] += arrayOfFunctions[k] * matrixA[j, k];
+        //            bool inverse = false;
+        //            double arg = 2 * Math.PI * j * k / n * (inverse ? 1 : -1);
+        //            Complex qw = new Complex(Math.Cos(arg), Math.Sin(arg));
+        //            arrayOfCoeffC[j] += arrayOfFunctions[k] * qw;
+        //        }
+        //        arrayOfCoeffC[j] /= Math.Sqrt(n);
+        //    }
+        //}
+
+        //internal static double[] Multiplication(Complex[] arrayOfCoeffC, Complex[,] matrixA, int n) {
+        //    Complex[] moF = new Complex[n + 1];
+        //    double[] moFReal = new double[n + 1];
+        //    for (int j = 0; j < n + 1; j++) {
+        //        for (int k = 0; k < n + 1; k++) {
+        //            bool inverse = true;
+        //            double arg = 2 * Math.PI * j * k / n * (inverse ? 1 : -1);
+        //            Complex qw = new Complex(Math.Cos(arg), Math.Sin(arg));
+        //            moF[j] += arrayOfCoeffC[k] * qw;
+        //            //moF[j] += arrayOfCoeffC[k] * qq;
+        //        }
+        //        moF[j] /= Math.Sqrt(n);
+        //        moFReal[j] = moF[j].Real;
+        //    }
+
+        //    return moFReal;
+        //}
 
         #endregion
     }
