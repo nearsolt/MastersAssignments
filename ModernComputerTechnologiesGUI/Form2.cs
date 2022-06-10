@@ -126,7 +126,11 @@ namespace ModernComputerTechnologiesGUI {
 
         #region Test Buttons
         private void button_testButton_Click(object sender, EventArgs e) {
-            this.label_infoString1.Text = $"...";
+            string info = string.Empty;
+            foreach (Complex item in arrayOfComplexNum) {
+                info += $"({item.Real}, {item.Imaginary}), ";
+            }
+            Console.WriteLine($"( Re( f ), Im( f ) ):\n{info}");
         }
         private void button_testClearInfo_Click(object sender, EventArgs e) {
             this.label_infoString1.Text = string.Empty;
@@ -165,10 +169,10 @@ namespace ModernComputerTechnologiesGUI {
             Complex[] arrayCoeffC = Helper.DFT(arrayOfComplexNum, numberN);
             Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
             
-            Complex[] arrayOfModifiedFunc = Helper.DFT(arrayCoeffC, numberN, true);                                                                     
-            Complex[] sortedArrayOfModifiedFunc = ((Complex[])arrayOfModifiedFunc.Clone()).OrderBy(c => c.Real).ToArray();
+            Complex[] arrayOfModifiedFunc = Helper.DFT(arrayCoeffC, numberN, true);
+            arrayOfModifiedFunc = ((Complex[])arrayOfModifiedFunc.Clone()).OrderBy(c => c.Real).ToArray();
 
-            foreach (Complex item in sortedArrayOfModifiedFunc) {                                                                
+            foreach (Complex item in arrayOfModifiedFunc) {                                                                
                 this.chart_mainChart.Series[1].Points.AddXY(item.Real, item.Imaginary);
             }
             #region debug BuildChartOfModifiedComplexFunc
@@ -218,16 +222,16 @@ namespace ModernComputerTechnologiesGUI {
             Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
 
             Complex[] arrayOfModifiedComplexFunc = Helper.DFT(arrayCoeffC, numberN, true);
-            Complex[] sortedArrayOfModifiedComplexFunc = ((Complex[])arrayOfModifiedComplexFunc.Clone()).OrderBy(c => c.Real).ToArray();
+            arrayOfModifiedComplexFunc = ((Complex[])arrayOfModifiedComplexFunc.Clone()).OrderBy(c => c.Real).ToArray();
 
             for (int j = 0; j < numberN; j++) {
-                this.chart_mainChart.Series[1].Points.AddXY(arrayOfValuesX[j], sortedArrayOfModifiedComplexFunc[j].Real);
+                this.chart_mainChart.Series[1].Points.AddXY(arrayOfValuesX[j], arrayOfModifiedComplexFunc[j].Real);
             }
             #region debug BuildChartOfModifiedComplexFunc
             if (this.checkBox_debug.Checked) {
                 string info2 = string.Empty;
                 for (int j = 0; j < numberN; j++) {
-                    info2 += $"({arrayOfValuesX[j]}, {sortedArrayOfModifiedComplexFunc[j].Real}), ";
+                    info2 += $"({arrayOfValuesX[j]}, {arrayOfModifiedComplexFunc[j].Real}), ";
                 }
                 this.label_infoString2.Text = $"{nameof(numberOfZeroed)}={numberOfZeroed}. ( x_k, f^_k ):\n{info2}";
             }

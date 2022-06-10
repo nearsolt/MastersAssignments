@@ -99,29 +99,27 @@ namespace ModernComputerTechnologiesGUI {
         /// <param name="numN">размерность массива</param>
         /// <param name="numOfZeroed">количество элементов для обнуления</param>
         internal static void ZeroingPercentageOfMinimumArrayValues(Complex[] array, int numN, int numOfZeroed) {
-
-            Tuple<Complex, int>[] tupleArrayCoeffC = new Tuple<Complex, int>[numN];
+            Tuple<Complex, int>[] tupleArray = new Tuple<Complex, int>[numN];
             for (int j = 0; j < numN; j++) {
-                tupleArrayCoeffC[j] = new Tuple<Complex, int>(array[j], j);
+                tupleArray[j] = new Tuple<Complex, int>(array[j], j);
             }
-            Tuple<Complex, int>[] sortedTupleArrayCoeffC = ((Tuple<Complex, int>[])tupleArrayCoeffC.Clone()).
-                OrderBy(c => Math.Sqrt(Math.Pow(c.Item1.Real, 2) + Math.Pow(c.Item1.Imaginary, 2))).ToArray();
+            tupleArray = ((Tuple<Complex, int>[])tupleArray.Clone()).OrderBy(c => c.Item1.Magnitude).ToArray();
             for (int j = 0; j < numOfZeroed; j++) {
-                sortedTupleArrayCoeffC[j] = new Tuple<Complex, int>((Complex)0, sortedTupleArrayCoeffC[j].Item2);
+                tupleArray[j] = new Tuple<Complex, int>((Complex)0, tupleArray[j].Item2);
             }
-            tupleArrayCoeffC = ((Tuple<Complex, int>[])sortedTupleArrayCoeffC.Clone()).OrderBy(c => c.Item2).ToArray();
+            tupleArray = ((Tuple<Complex, int>[])tupleArray.Clone()).OrderBy(c => c.Item2).ToArray();
             for (int j = 0; j < numN; j++) {
-                array[j] = tupleArrayCoeffC[j].Item1;
+                array[j] = tupleArray[j].Item1;
             }
             #region debug
+            foreach (Tuple<Complex, int> item in tupleArray) {
+                Console.Write($"({item.Item1.Real}, {item.Item1.Imaginary}), ");
+            }
+            Console.WriteLine($" - sorted array coeff");
             foreach (Complex item in array) {
                 Console.Write($"({item.Real}, {item.Imaginary}), ");
             }
             Console.WriteLine($" - array coeff");
-            foreach (Tuple<Complex, int> item in sortedTupleArrayCoeffC) {
-                Console.Write($"({item.Item1.Real}, {item.Item1.Imaginary}), ");
-            }
-            Console.WriteLine($" - sorted array coeff");
             #endregion
         }
 
