@@ -77,8 +77,8 @@ namespace ModernComputerTechnologiesGUI {
             } else {
                 this.panel_initChartsType.Enabled = false;
                 this.panel_initChartsType.Visible = false;
-                this.chart_mainChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-                this.chart_mainChart.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                this.chart_mainChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+                this.chart_mainChart.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             }
         }
         private void checkBox_debug_CheckedChanged(object sender, EventArgs e) {
@@ -126,16 +126,22 @@ namespace ModernComputerTechnologiesGUI {
 
         #region Test Buttons
         private void button_testButton_Click(object sender, EventArgs e) {
-            string info = string.Empty;
-            foreach (Complex item in arrayOfComplexNum) {
-                info += $"({item.Real}, {item.Imaginary}), ";
-            }
-            Console.WriteLine($"( Re( f ); Im( f ) ):\n{info}");
+            
         }
         private void button_testClearInfo_Click(object sender, EventArgs e) {
             this.label_infoString1.Text = string.Empty;
             this.label_infoString2.Text = string.Empty;
         }
+
+        private void DebugInfo2(Complex[] arrayCoeffC, int numberOfZeroed, Complex[] arrayOfModFunc) {
+            int tmp = arrayOfModFunc.Distinct().Count();
+            this.label_infoString2.Text = $"count distinct elem<{nameof(arrayOfModFunc)}> = {tmp}";
+            if (tmp < 3) {
+                this.label_infoString2.Text += $" ( < 3 ) ==> distinct elem <(Re_f^_k; Im_f^_k)>:  {string.Join(", ", arrayOfModFunc.Distinct().Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}";
+            }
+            this.label_infoString2.Text += $"\n{nameof(numberOfZeroed)}={numberOfZeroed}.  CoeffC !=0: {string.Join(", ", arrayCoeffC.Where(c => c != (Complex)0).Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}";
+        }
+
         #endregion
 
         #region Methods
@@ -160,11 +166,7 @@ namespace ModernComputerTechnologiesGUI {
             }
             #region debug BuildChartOfOriginalComplexFunc
             if (this.checkBox_debug.Checked) {
-                string info1 = string.Empty;
-                foreach (Complex item in arrayOfComplexNum) {
-                    info1 += $"({item.Real}, {item.Imaginary}), ";
-                }
-                this.label_infoString1.Text = $"( Re( f ), Im( f ) ):\n{info1}";
+                this.label_infoString1.Text = $"( Re_f^_k; Im_f^_k ):\n{string.Join(", ", arrayOfComplexNum.Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}";
             }
             #endregion
         }
@@ -181,20 +183,16 @@ namespace ModernComputerTechnologiesGUI {
             Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
             
             Complex[] arrayOfModifiedFunc = Helper.DFT(arrayCoeffC, numberN, true);
-            arrayOfModifiedFunc = ((Complex[])arrayOfModifiedFunc.Clone()).OrderBy(c => c.Real).ToArray();
+            //arrayOfModifiedFunc = ((Complex[])arrayOfModifiedFunc.Clone()).OrderBy(c => c.Real).ToArray();
+            #region debug BuildChartOfModifiedComplexFunc
+            if (this.checkBox_debug.Checked) {
+                DebugInfo2(arrayCoeffC, numberOfZeroed, arrayOfModifiedFunc);
+            }
+            #endregion
 
             foreach (Complex item in arrayOfModifiedFunc) {                                                                
                 this.chart_mainChart.Series[1].Points.AddXY(item.Real, item.Imaginary);
             }
-            #region debug BuildChartOfModifiedComplexFunc
-            if (this.checkBox_debug.Checked) {
-                string info2 = string.Empty;
-                foreach (Complex item in arrayOfModifiedFunc) {
-                    info2 += $"({item.Real}, {item.Imaginary}), ";
-                }
-                this.label_infoString2.Text = $"{nameof(numberOfZeroed)}={numberOfZeroed}. ( Re( f^ ), Im( f^ ) ):\n{info2}";
-            }
-            #endregion
         }
         
         /// <summary>
@@ -218,9 +216,9 @@ namespace ModernComputerTechnologiesGUI {
             if (this.checkBox_debug.Checked) {
                 string info1 = string.Empty;
                 for (int j = 0; j < numberN; j++) {
-                    info1 += $"({arrayOfValuesX[j]}, {arrayOfFuncValues[j]}), ";
+                    info1 += $"({arrayOfValuesX[j]}; {arrayOfFuncValues[j]}), ";
                 }
-                this.label_infoString1.Text = $"( x_k, f_k ):\n{info1}";
+                this.label_infoString1.Text = $"( x_k; f_k ):\n{info1}";
             }
             #endregion
         }
@@ -241,20 +239,16 @@ namespace ModernComputerTechnologiesGUI {
             Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
 
             Complex[] arrayOfModifiedComplexFunc = Helper.DFT(arrayCoeffC, numberN, true);
-            arrayOfModifiedComplexFunc = ((Complex[])arrayOfModifiedComplexFunc.Clone()).OrderBy(c => c.Real).ToArray();
+            //arrayOfModifiedComplexFunc = ((Complex[])arrayOfModifiedComplexFunc.Clone()).OrderBy(c => c.Real).ToArray();
+            #region debug BuildChartOfModifiedComplexFunc
+            if (this.checkBox_debug.Checked) {
+                DebugInfo2(arrayCoeffC, numberOfZeroed, arrayOfModifiedComplexFunc);
+            }
+            #endregion
 
             for (int j = 0; j < numberN; j++) {
                 this.chart_mainChart.Series[1].Points.AddXY(arrayOfValuesX[j], arrayOfModifiedComplexFunc[j].Real);
             }
-            #region debug BuildChartOfModifiedComplexFunc
-            if (this.checkBox_debug.Checked) {
-                string info2 = string.Empty;
-                for (int j = 0; j < numberN; j++) {
-                    info2 += $"({arrayOfValuesX[j]}, {arrayOfModifiedComplexFunc[j].Real}), ";
-                }
-                this.label_infoString2.Text = $"{nameof(numberOfZeroed)}={numberOfZeroed}. ( x_k, f^_k ):\n{info2}";
-            }
-            #endregion
         }
         #endregion
     }

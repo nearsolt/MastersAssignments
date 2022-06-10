@@ -61,7 +61,10 @@ namespace ModernComputerTechnologiesGUI {
         /// <param name="value">точка</param>
         /// <returns></returns>
         private static double CalcFuncValues(double value) {
-            return Math.Pow(value, 3) - value + 2;
+            //return Math.Pow(value, 3) - value + 2;
+            return Math.Pow(value, 2);
+            //return Math.Cos(value);
+            //return Math.Sin(value);
         }
 
         /// <summary>
@@ -104,31 +107,15 @@ namespace ModernComputerTechnologiesGUI {
                 tupleArray[j] = new Tuple<Complex, int>(array[j], j);
             }
             tupleArray = ((Tuple<Complex, int>[])tupleArray.Clone()).OrderBy(c => c.Item1.Magnitude).ToArray();
-            #region debug
-            //foreach (Tuple<Complex, int> item in tupleArray) {
-            //    Console.Write($"({item.Item1.Real}, {item.Item1.Imaginary}), ");
-            //}
-            //Console.WriteLine($" - sorted array coeff");
-            #endregion
+            
             for (int j = 0; j < numOfZeroed; j++) {
                 tupleArray[j] = new Tuple<Complex, int>((Complex)0, tupleArray[j].Item2);
             }    
-            #region debug
-            //foreach (Tuple<Complex, int> item in tupleArray) {
-            //    Console.Write($"({item.Item1.Real}, {item.Item1.Imaginary}), ");
-            //}
-            //Console.WriteLine($" - sorted array coeff with numOfZeroed");
-            #endregion
+            
             tupleArray = ((Tuple<Complex, int>[])tupleArray.Clone()).OrderBy(c => c.Item2).ToArray();
             for (int j = 0; j < numN; j++) {
                 array[j] = tupleArray[j].Item1;
             }
-            #region debug
-            //foreach (Complex item in array) {
-            //    Console.Write($"({item.Real}, {item.Imaginary}), ");
-            //}
-            //Console.WriteLine($" - array coeff");
-            #endregion
         }
     }
 }
