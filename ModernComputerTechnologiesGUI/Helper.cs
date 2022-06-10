@@ -122,6 +122,5 @@ namespace ModernComputerTechnologiesGUI {
             Console.WriteLine($" - array coeff");
             #endregion
         }
-
     }
 }

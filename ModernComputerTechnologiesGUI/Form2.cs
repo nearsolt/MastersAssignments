@@ -130,7 +130,7 @@ namespace ModernComputerTechnologiesGUI {
             foreach (Complex item in arrayOfComplexNum) {
                 info += $"({item.Real}, {item.Imaginary}), ";
             }
-            Console.WriteLine($"( Re( f ), Im( f ) ):\n{info}");
+            Console.WriteLine($"( Re( f ); Im( f ) ):\n{info}");
         }
         private void button_testClearInfo_Click(object sender, EventArgs e) {
             this.label_infoString1.Text = string.Empty;
@@ -139,6 +139,9 @@ namespace ModernComputerTechnologiesGUI {
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Random-генерация массива комплексных чисел
+        /// </summary>
         private void GenerateComplexNum() {
             numberN = (int)this.numericUpDown_numN.Value;
             arrayOfComplexNum = new Complex[numberN];
@@ -146,6 +149,10 @@ namespace ModernComputerTechnologiesGUI {
             scalingCoeff = (int)this.numericUpDown_ScalingCoeff.Value;
             arrayOfComplexNum = Helper.GenerateSortedComplexNumArray(numberN, scalingCoeff);
         }
+        
+        /// <summary>
+        /// Построение графика исходной функции f_k \in C
+        /// </summary>
         private void BuildChartOfOriginalComplexFunc() {
             this.chart_mainChart.Series[0].Points.Clear();
             foreach (Complex item in arrayOfComplexNum) {
@@ -161,6 +168,10 @@ namespace ModernComputerTechnologiesGUI {
             }
             #endregion
         }
+        
+        /// <summary>
+        /// Построение графика измененной функции f_k \in C
+        /// </summary>
         private void BuildChartOfModifiedComplexFunc() {
             this.chart_mainChart.Series[1].Points.Clear();
             zeroingPercentage = (int)this.numericUpDown_percent.Value;
@@ -185,6 +196,10 @@ namespace ModernComputerTechnologiesGUI {
             }
             #endregion
         }
+        
+        /// <summary>
+        /// Построение графика исходной функции f_k \in R
+        /// </summary>
         private void BuildChartOfOriginalRealFunc() {
             this.chart_mainChart.Series[0].Points.Clear();
             numberN = (int)this.numericUpDown_numN.Value;
@@ -209,6 +224,10 @@ namespace ModernComputerTechnologiesGUI {
             }
             #endregion
         }
+        
+        /// <summary>
+        /// Построение графика измененной функции f_k \in R
+        /// </summary>
         private void BuildChartOfModifiedRealFunc() {
             this.chart_mainChart.Series[1].Points.Clear();
             zeroingPercentage = (int)this.numericUpDown_percent.Value;
