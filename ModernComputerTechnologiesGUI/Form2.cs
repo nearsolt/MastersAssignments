@@ -124,7 +124,7 @@ namespace ModernComputerTechnologiesGUI {
         }
         #endregion
 
-        #region Test Buttons
+        #region Test Buttons & Debug
         private void button_testButton_Click(object sender, EventArgs e) {
             
         }
@@ -183,7 +183,7 @@ namespace ModernComputerTechnologiesGUI {
             Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
             
             Complex[] arrayOfModifiedFunc = Helper.DFT(arrayCoeffC, numberN, true);
-            //arrayOfModifiedFunc = ((Complex[])arrayOfModifiedFunc.Clone()).OrderBy(c => c.Real).ToArray();
+            
             #region debug BuildChartOfModifiedComplexFunc
             if (this.checkBox_debug.Checked) {
                 DebugInfo2(arrayCoeffC, numberOfZeroed, arrayOfModifiedFunc);
@@ -239,7 +239,7 @@ namespace ModernComputerTechnologiesGUI {
             Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
 
             Complex[] arrayOfModifiedComplexFunc = Helper.DFT(arrayCoeffC, numberN, true);
-            //arrayOfModifiedComplexFunc = ((Complex[])arrayOfModifiedComplexFunc.Clone()).OrderBy(c => c.Real).ToArray();
+            
             #region debug BuildChartOfModifiedComplexFunc
             if (this.checkBox_debug.Checked) {
                 DebugInfo2(arrayCoeffC, numberOfZeroed, arrayOfModifiedComplexFunc);
