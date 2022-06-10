@@ -55,6 +55,8 @@ namespace ModernComputerTechnologiesGUI {
             this.radioButton_chartsTypeSpline = new System.Windows.Forms.RadioButton();
             this.checkBox_chartscustom = new System.Windows.Forms.CheckBox();
             this.panel_initCondForComplexF = new System.Windows.Forms.Panel();
+            this.numericUpDown_ScalingCoeff = new System.Windows.Forms.NumericUpDown();
+            this.label_initScalingCoeff = new System.Windows.Forms.Label();
             this.panel_initCondForRealF = new System.Windows.Forms.Panel();
             this.numericUpDown_endOfInterval = new System.Windows.Forms.NumericUpDown();
             this.label_endOfInterval = new System.Windows.Forms.Label();
@@ -66,10 +68,10 @@ namespace ModernComputerTechnologiesGUI {
             this.button_testClearInfo = new System.Windows.Forms.Button();
             this.button_testButton = new System.Windows.Forms.Button();
             this.groupBox_advancedSettings = new System.Windows.Forms.GroupBox();
+            this.checkBox_debug = new System.Windows.Forms.CheckBox();
             this.chart_mainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox_mainChartAndInfoPanel = new System.Windows.Forms.GroupBox();
             this.panel_infoPanel = new System.Windows.Forms.Panel();
-            this.checkBox_debug = new System.Windows.Forms.CheckBox();
             this.label_infoString2 = new System.Windows.Forms.Label();
             this.panel_choiceInitCond.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numN)).BeginInit();
@@ -79,6 +81,7 @@ namespace ModernComputerTechnologiesGUI {
             this.panel_initNumN.SuspendLayout();
             this.panel_initChartsType.SuspendLayout();
             this.panel_initCondForComplexF.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ScalingCoeff)).BeginInit();
             this.panel_initCondForRealF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_endOfInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_startOfInterval)).BeginInit();
@@ -134,10 +137,10 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // button_generateComplexNum
             // 
-            this.button_generateComplexNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_generateComplexNum.Location = new System.Drawing.Point(21, 7);
+            this.button_generateComplexNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_generateComplexNum.Location = new System.Drawing.Point(183, 7);
             this.button_generateComplexNum.Name = "button_generateComplexNum";
-            this.button_generateComplexNum.Size = new System.Drawing.Size(320, 48);
+            this.button_generateComplexNum.Size = new System.Drawing.Size(174, 48);
             this.button_generateComplexNum.TabIndex = 3;
             this.button_generateComplexNum.Text = "Generate an array of complex numbers";
             this.button_generateComplexNum.UseVisualStyleBackColor = true;
@@ -364,12 +367,41 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // panel_initCondForComplexF
             // 
+            this.panel_initCondForComplexF.Controls.Add(this.numericUpDown_ScalingCoeff);
+            this.panel_initCondForComplexF.Controls.Add(this.label_initScalingCoeff);
             this.panel_initCondForComplexF.Controls.Add(this.button_generateComplexNum);
             this.panel_initCondForComplexF.Location = new System.Drawing.Point(9, 143);
             this.panel_initCondForComplexF.Name = "panel_initCondForComplexF";
             this.panel_initCondForComplexF.Size = new System.Drawing.Size(364, 62);
             this.panel_initCondForComplexF.TabIndex = 15;
             this.panel_initCondForComplexF.Visible = false;
+            // 
+            // numericUpDown_ScalingCoeff
+            // 
+            this.numericUpDown_ScalingCoeff.Location = new System.Drawing.Point(89, 16);
+            this.numericUpDown_ScalingCoeff.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_ScalingCoeff.Name = "numericUpDown_ScalingCoeff";
+            this.numericUpDown_ScalingCoeff.Size = new System.Drawing.Size(70, 22);
+            this.numericUpDown_ScalingCoeff.TabIndex = 5;
+            this.numericUpDown_ScalingCoeff.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label_initScalingCoeff
+            // 
+            this.label_initScalingCoeff.AutoSize = true;
+            this.label_initScalingCoeff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_initScalingCoeff.Location = new System.Drawing.Point(10, 16);
+            this.label_initScalingCoeff.Name = "label_initScalingCoeff";
+            this.label_initScalingCoeff.Size = new System.Drawing.Size(68, 18);
+            this.label_initScalingCoeff.TabIndex = 4;
+            this.label_initScalingCoeff.Text = "Scaling:";
             // 
             // panel_initCondForRealF
             // 
@@ -397,18 +429,18 @@ namespace ModernComputerTechnologiesGUI {
             this.numericUpDown_endOfInterval.Size = new System.Drawing.Size(76, 22);
             this.numericUpDown_endOfInterval.TabIndex = 4;
             this.numericUpDown_endOfInterval.Value = new decimal(new int[] {
-            10,
+            45,
             0,
             0,
-            0});
+            65536});
             // 
             // label_endOfInterval
             // 
             this.label_endOfInterval.AutoSize = true;
-            this.label_endOfInterval.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_endOfInterval.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_endOfInterval.Location = new System.Drawing.Point(186, 39);
             this.label_endOfInterval.Name = "label_endOfInterval";
-            this.label_endOfInterval.Size = new System.Drawing.Size(43, 20);
+            this.label_endOfInterval.Size = new System.Drawing.Size(38, 18);
             this.label_endOfInterval.TabIndex = 3;
             this.label_endOfInterval.Text = "End:";
             // 
@@ -425,18 +457,18 @@ namespace ModernComputerTechnologiesGUI {
             this.numericUpDown_startOfInterval.Size = new System.Drawing.Size(76, 22);
             this.numericUpDown_startOfInterval.TabIndex = 2;
             this.numericUpDown_startOfInterval.Value = new decimal(new int[] {
-            5,
+            25,
             0,
             0,
-            0});
+            -2147418112});
             // 
             // label_startOfInterval
             // 
             this.label_startOfInterval.AutoSize = true;
-            this.label_startOfInterval.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_startOfInterval.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_startOfInterval.Location = new System.Drawing.Point(16, 39);
             this.label_startOfInterval.Name = "label_startOfInterval";
-            this.label_startOfInterval.Size = new System.Drawing.Size(50, 20);
+            this.label_startOfInterval.Size = new System.Drawing.Size(43, 18);
             this.label_startOfInterval.TabIndex = 1;
             this.label_startOfInterval.Text = "Start:";
             // 
@@ -483,6 +515,7 @@ namespace ModernComputerTechnologiesGUI {
             this.button_testClearInfo.TabIndex = 9;
             this.button_testClearInfo.Text = "ClearInfo";
             this.button_testClearInfo.UseVisualStyleBackColor = true;
+            this.button_testClearInfo.Visible = false;
             this.button_testClearInfo.Click += new System.EventHandler(this.button_testClearInfo_Click);
             // 
             // button_testButton
@@ -493,6 +526,7 @@ namespace ModernComputerTechnologiesGUI {
             this.button_testButton.TabIndex = 8;
             this.button_testButton.Text = "Test";
             this.button_testButton.UseVisualStyleBackColor = true;
+            this.button_testButton.Visible = false;
             this.button_testButton.Click += new System.EventHandler(this.button_testButton_Click);
             // 
             // groupBox_advancedSettings
@@ -506,6 +540,17 @@ namespace ModernComputerTechnologiesGUI {
             this.groupBox_advancedSettings.Size = new System.Drawing.Size(381, 250);
             this.groupBox_advancedSettings.TabIndex = 19;
             this.groupBox_advancedSettings.TabStop = false;
+            // 
+            // checkBox_debug
+            // 
+            this.checkBox_debug.AutoSize = true;
+            this.checkBox_debug.Location = new System.Drawing.Point(199, 14);
+            this.checkBox_debug.Name = "checkBox_debug";
+            this.checkBox_debug.Size = new System.Drawing.Size(72, 21);
+            this.checkBox_debug.TabIndex = 10;
+            this.checkBox_debug.Text = "Debug";
+            this.checkBox_debug.UseVisualStyleBackColor = true;
+            this.checkBox_debug.CheckedChanged += new System.EventHandler(this.checkBox_debug_CheckedChanged);
             // 
             // chart_mainChart
             // 
@@ -556,16 +601,6 @@ namespace ModernComputerTechnologiesGUI {
             this.panel_infoPanel.Size = new System.Drawing.Size(919, 128);
             this.panel_infoPanel.TabIndex = 1;
             // 
-            // checkBox_debug
-            // 
-            this.checkBox_debug.AutoSize = true;
-            this.checkBox_debug.Location = new System.Drawing.Point(199, 14);
-            this.checkBox_debug.Name = "checkBox_debug";
-            this.checkBox_debug.Size = new System.Drawing.Size(72, 21);
-            this.checkBox_debug.TabIndex = 10;
-            this.checkBox_debug.Text = "Debug";
-            this.checkBox_debug.UseVisualStyleBackColor = true;
-            // 
             // label_infoString2
             // 
             this.label_infoString2.AutoSize = true;
@@ -601,6 +636,8 @@ namespace ModernComputerTechnologiesGUI {
             this.panel_initChartsType.ResumeLayout(false);
             this.panel_initChartsType.PerformLayout();
             this.panel_initCondForComplexF.ResumeLayout(false);
+            this.panel_initCondForComplexF.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ScalingCoeff)).EndInit();
             this.panel_initCondForRealF.ResumeLayout(false);
             this.panel_initCondForRealF.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_endOfInterval)).EndInit();
@@ -660,5 +697,7 @@ namespace ModernComputerTechnologiesGUI {
         private System.Windows.Forms.Button button_testClearInfo;
         private System.Windows.Forms.CheckBox checkBox_debug;
         private System.Windows.Forms.Label label_infoString2;
+        private System.Windows.Forms.Label label_initScalingCoeff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_ScalingCoeff;
     }
 }
