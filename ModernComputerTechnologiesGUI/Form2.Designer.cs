@@ -172,13 +172,14 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // label_infoString1
             // 
+            this.label_infoString1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label_infoString1.AutoSize = true;
             this.label_infoString1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_infoString1.Location = new System.Drawing.Point(17, 9);
-            this.label_infoString1.MaximumSize = new System.Drawing.Size(880, 50);
-            this.label_infoString1.MinimumSize = new System.Drawing.Size(880, 50);
+            this.label_infoString1.Location = new System.Drawing.Point(20, 12);
+            this.label_infoString1.MinimumSize = new System.Drawing.Size(880, 65);
             this.label_infoString1.Name = "label_infoString1";
-            this.label_infoString1.Size = new System.Drawing.Size(880, 50);
+            this.label_infoString1.Size = new System.Drawing.Size(880, 65);
             this.label_infoString1.TabIndex = 6;
             // 
             // button_plotChartOriginalF
@@ -563,6 +564,9 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // chart_mainChart
             // 
+            this.chart_mainChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
             this.chart_mainChart.ChartAreas.Add(chartArea1);
             legend1.Alignment = System.Drawing.StringAlignment.Center;
@@ -571,7 +575,7 @@ namespace ModernComputerTechnologiesGUI {
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
             this.chart_mainChart.Legends.Add(legend1);
-            this.chart_mainChart.Location = new System.Drawing.Point(13, 16);
+            this.chart_mainChart.Location = new System.Drawing.Point(13, 15);
             this.chart_mainChart.Name = "chart_mainChart";
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
@@ -587,13 +591,15 @@ namespace ModernComputerTechnologiesGUI {
             series2.Name = "Modified f";
             this.chart_mainChart.Series.Add(series1);
             this.chart_mainChart.Series.Add(series2);
-            this.chart_mainChart.Size = new System.Drawing.Size(919, 613);
+            this.chart_mainChart.Size = new System.Drawing.Size(919, 578);
             this.chart_mainChart.TabIndex = 0;
             this.chart_mainChart.Text = "1";
             // 
             // groupBox_mainChartAndInfoPanel
             // 
-            this.groupBox_mainChartAndInfoPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox_mainChartAndInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_mainChartAndInfoPanel.Controls.Add(this.panel_infoPanel);
             this.groupBox_mainChartAndInfoPanel.Controls.Add(this.chart_mainChart);
             this.groupBox_mainChartAndInfoPanel.Location = new System.Drawing.Point(420, 3);
@@ -604,25 +610,30 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // panel_infoPanel
             // 
+            this.panel_infoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_infoPanel.Controls.Add(this.label_infoString2);
             this.panel_infoPanel.Controls.Add(this.label_infoString1);
-            this.panel_infoPanel.Location = new System.Drawing.Point(13, 641);
+            this.panel_infoPanel.Location = new System.Drawing.Point(13, 600);
             this.panel_infoPanel.Name = "panel_infoPanel";
-            this.panel_infoPanel.Size = new System.Drawing.Size(919, 128);
+            this.panel_infoPanel.Size = new System.Drawing.Size(919, 169);
             this.panel_infoPanel.TabIndex = 1;
             // 
             // label_infoString2
             // 
+            this.label_infoString2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label_infoString2.AutoSize = true;
-            this.label_infoString2.Location = new System.Drawing.Point(17, 69);
-            this.label_infoString2.MaximumSize = new System.Drawing.Size(880, 50);
-            this.label_infoString2.MinimumSize = new System.Drawing.Size(880, 50);
+            this.label_infoString2.Location = new System.Drawing.Point(20, 91);
+            this.label_infoString2.MinimumSize = new System.Drawing.Size(880, 65);
             this.label_infoString2.Name = "label_infoString2";
-            this.label_infoString2.Size = new System.Drawing.Size(880, 50);
+            this.label_infoString2.Size = new System.Drawing.Size(880, 65);
             this.label_infoString2.TabIndex = 7;
             // 
             // groupBox_leftPanel
             // 
+            this.groupBox_leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox_leftPanel.Controls.Add(this.groupBox_initCond);
             this.groupBox_leftPanel.Controls.Add(this.groupBox_plotCharts);
             this.groupBox_leftPanel.Controls.Add(this.groupBox_advancedSettings);
