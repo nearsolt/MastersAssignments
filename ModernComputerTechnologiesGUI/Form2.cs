@@ -69,7 +69,7 @@ namespace ModernComputerTechnologiesGUI {
         }
         #endregion
 
-        #region Buttons
+        #region CheckBoxs
         private void checkBox_chartscustom_CheckedChanged(object sender, EventArgs e) {
             if (this.checkBox_chartscustom.Checked) {
                 this.panel_initChartsType.Enabled = true;
