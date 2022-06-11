@@ -523,7 +523,6 @@ namespace ModernComputerTechnologiesGUI {
             this.button_testClearInfo.TabIndex = 9;
             this.button_testClearInfo.Text = "ClearInfo";
             this.button_testClearInfo.UseVisualStyleBackColor = true;
-            this.button_testClearInfo.Visible = false;
             this.button_testClearInfo.Click += new System.EventHandler(this.button_testClearInfo_Click);
             // 
             // button_testButton
@@ -534,7 +533,6 @@ namespace ModernComputerTechnologiesGUI {
             this.button_testButton.TabIndex = 8;
             this.button_testButton.Text = "Test";
             this.button_testButton.UseVisualStyleBackColor = true;
-            this.button_testButton.Visible = false;
             this.button_testButton.Click += new System.EventHandler(this.button_testButton_Click);
             // 
             // groupBox_advancedSettings
