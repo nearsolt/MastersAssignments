@@ -15,8 +15,8 @@ using System.IO;
 using System.Threading;
 
 namespace ModernComputerTechnologiesGUI {
-    public partial class Form2 : Form {
-        public Form2() {
+    public partial class MainForm : Form {
+        public MainForm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
@@ -170,6 +170,7 @@ namespace ModernComputerTechnologiesGUI {
             foreach (Complex item in arrayOfComplexNum) {
                 this.chart_mainChart.Series[0].Points.AddXY(item.Real, item.Imaginary);
             }
+
             #region debug BuildChartOfOriginalComplexFunc
             if (this.checkBox_debug.Checked) {
                 Helper.logger.Info($"<BuildChartOfOriginalComplexFunc> Исходная комплексная функция ( Re_f_k; Im_f_k ):\n{string.Join(", ", arrayOfComplexNum.Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}\n");
@@ -231,6 +232,7 @@ namespace ModernComputerTechnologiesGUI {
             for (int j = 0; j < numberN; j++) {
                 this.chart_mainChart.Series[0].Points.AddXY(arrayOfValuesX[j], arrayOfFuncValues[j]);
             }
+
             #region debug BuildChartOfOriginalRealFunc
             if (this.checkBox_debug.Checked) {
                 string info = string.Empty;

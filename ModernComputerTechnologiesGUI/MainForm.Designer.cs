@@ -1,6 +1,6 @@
 ﻿
 namespace ModernComputerTechnologiesGUI {
-    partial class Form2 {
+    partial class MainForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -28,7 +28,7 @@ namespace ModernComputerTechnologiesGUI {
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_choiceInitCond = new System.Windows.Forms.Panel();
             this.label_choiceInitCond = new System.Windows.Forms.Label();
             this.radioButton_caseForRealF = new System.Windows.Forms.RadioButton();
