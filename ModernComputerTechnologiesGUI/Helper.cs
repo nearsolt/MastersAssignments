@@ -110,12 +110,10 @@ namespace ModernComputerTechnologiesGUI {
                 tupleArray[j] = new Tuple<Complex, int>(array[j], j);
             }
             tupleArray = ((Tuple<Complex, int>[])tupleArray.Clone()).OrderBy(c => c.Item1.Magnitude).ToArray();
-            logger.Debug($"<ZeroingPercentageOfMinimumArrayValues>  Отсортированные по возрастанию элементы массива>:\n" +
-                $"{string.Join(", ", tupleArray.Select(c => $"<({c.Item1.Real}; {c.Item1.Imaginary}); {c.Item2}>").ToArray())}\n");
+            //logger.Debug($"<ZeroingPercentageOfMinimumArrayValues> Отсортированные по возрастанию элементы массива>:\n{string.Join(", ", tupleArray.Select(c => $"<({c.Item1.Real}; {c.Item1.Imaginary}); {c.Item2}>").ToArray())}\n");
             for (int j = 0; j < numOfZeroed; j++) {
                 tupleArray[j] = new Tuple<Complex, int>((Complex)0, tupleArray[j].Item2);
             }
-
             tupleArray = ((Tuple<Complex, int>[])tupleArray.Clone()).OrderBy(c => c.Item2).ToArray();
             for (int j = 0; j < numN; j++) {
                 array[j] = tupleArray[j].Item1;
