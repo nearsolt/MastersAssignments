@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernComputerTechnologies"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastAlgorithms", "FastAlgorithm\FastAlgorithms.csproj", "{75B2ED86-202E-4B60-BE2E-335ABC65BEA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraficsOpenGL", "GraficsOpenGL\GraficsOpenGL.csproj", "{8FC441C3-1041-4820-85EB-D6CD74C0155D}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SignalCodingTheory", "SignalCodingTheory\SignalCodingTheory.pyproj", "{1C5C80B6-91DA-4558-A2C9-21FBD7B04301}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernComputerTechnologiesGUI", "ModernComputerTechnologiesGUI\ModernComputerTechnologiesGUI.csproj", "{931C7E72-EDCD-470A-9FF5-A8DC63E5AEDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +39,16 @@ Global
 		{75B2ED86-202E-4B60-BE2E-335ABC65BEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75B2ED86-202E-4B60-BE2E-335ABC65BEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75B2ED86-202E-4B60-BE2E-335ABC65BEA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC441C3-1041-4820-85EB-D6CD74C0155D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC441C3-1041-4820-85EB-D6CD74C0155D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC441C3-1041-4820-85EB-D6CD74C0155D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC441C3-1041-4820-85EB-D6CD74C0155D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{931C7E72-EDCD-470A-9FF5-A8DC63E5AEDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931C7E72-EDCD-470A-9FF5-A8DC63E5AEDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931C7E72-EDCD-470A-9FF5-A8DC63E5AEDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931C7E72-EDCD-470A-9FF5-A8DC63E5AEDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5C80B6-91DA-4558-A2C9-21FBD7B04301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5C80B6-91DA-4558-A2C9-21FBD7B04301}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
