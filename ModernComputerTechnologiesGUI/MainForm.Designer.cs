@@ -1,6 +1,6 @@
 ﻿
 namespace ModernComputerTechnologiesGUI {
-    partial class Form2 {
+    partial class MainForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -28,14 +28,14 @@ namespace ModernComputerTechnologiesGUI {
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_choiceInitCond = new System.Windows.Forms.Panel();
             this.label_choiceInitCond = new System.Windows.Forms.Label();
             this.radioButton_caseForRealF = new System.Windows.Forms.RadioButton();
             this.radioButton_caseForComplexF = new System.Windows.Forms.RadioButton();
             this.button_generateComplexNum = new System.Windows.Forms.Button();
             this.numericUpDown_numN = new System.Windows.Forms.NumericUpDown();
-            this.label_infoString1 = new System.Windows.Forms.Label();
+            this.label_infoString = new System.Windows.Forms.Label();
             this.button_plotChartOriginalF = new System.Windows.Forms.Button();
             this.numericUpDown_percent = new System.Windows.Forms.NumericUpDown();
             this.panel_deleteCharts = new System.Windows.Forms.Panel();
@@ -72,7 +72,7 @@ namespace ModernComputerTechnologiesGUI {
             this.chart_mainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox_mainChartAndInfoPanel = new System.Windows.Forms.GroupBox();
             this.panel_infoPanel = new System.Windows.Forms.Panel();
-            this.label_infoString2 = new System.Windows.Forms.Label();
+            this.groupBox_leftPanel = new System.Windows.Forms.GroupBox();
             this.panel_choiceInitCond.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_percent)).BeginInit();
@@ -91,6 +91,7 @@ namespace ModernComputerTechnologiesGUI {
             ((System.ComponentModel.ISupportInitialize)(this.chart_mainChart)).BeginInit();
             this.groupBox_mainChartAndInfoPanel.SuspendLayout();
             this.panel_infoPanel.SuspendLayout();
+            this.groupBox_leftPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_choiceInitCond
@@ -163,21 +164,22 @@ namespace ModernComputerTechnologiesGUI {
             this.numericUpDown_numN.Size = new System.Drawing.Size(76, 22);
             this.numericUpDown_numN.TabIndex = 5;
             this.numericUpDown_numN.Value = new decimal(new int[] {
-            10,
+            100,
             0,
             0,
             0});
             // 
-            // label_infoString1
+            // label_infoString
             // 
-            this.label_infoString1.AutoSize = true;
-            this.label_infoString1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_infoString1.Location = new System.Drawing.Point(17, 9);
-            this.label_infoString1.MaximumSize = new System.Drawing.Size(880, 50);
-            this.label_infoString1.MinimumSize = new System.Drawing.Size(880, 50);
-            this.label_infoString1.Name = "label_infoString1";
-            this.label_infoString1.Size = new System.Drawing.Size(880, 50);
-            this.label_infoString1.TabIndex = 6;
+            this.label_infoString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_infoString.AutoSize = true;
+            this.label_infoString.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_infoString.Location = new System.Drawing.Point(20, 12);
+            this.label_infoString.MinimumSize = new System.Drawing.Size(880, 65);
+            this.label_infoString.Name = "label_infoString";
+            this.label_infoString.Size = new System.Drawing.Size(880, 65);
+            this.label_infoString.TabIndex = 6;
             // 
             // button_plotChartOriginalF
             // 
@@ -322,10 +324,12 @@ namespace ModernComputerTechnologiesGUI {
             // radioButton_chartsTypePoint
             // 
             this.radioButton_chartsTypePoint.AutoSize = true;
+            this.radioButton_chartsTypePoint.Checked = true;
             this.radioButton_chartsTypePoint.Location = new System.Drawing.Point(189, 41);
             this.radioButton_chartsTypePoint.Name = "radioButton_chartsTypePoint";
             this.radioButton_chartsTypePoint.Size = new System.Drawing.Size(61, 21);
             this.radioButton_chartsTypePoint.TabIndex = 2;
+            this.radioButton_chartsTypePoint.TabStop = true;
             this.radioButton_chartsTypePoint.Text = "Point";
             this.radioButton_chartsTypePoint.UseVisualStyleBackColor = true;
             this.radioButton_chartsTypePoint.CheckedChanged += new System.EventHandler(this.radioButton_chartsTypePoint_CheckedChanged);
@@ -344,12 +348,10 @@ namespace ModernComputerTechnologiesGUI {
             // radioButton_chartsTypeSpline
             // 
             this.radioButton_chartsTypeSpline.AutoSize = true;
-            this.radioButton_chartsTypeSpline.Checked = true;
             this.radioButton_chartsTypeSpline.Location = new System.Drawing.Point(43, 41);
             this.radioButton_chartsTypeSpline.Name = "radioButton_chartsTypeSpline";
             this.radioButton_chartsTypeSpline.Size = new System.Drawing.Size(68, 21);
             this.radioButton_chartsTypeSpline.TabIndex = 0;
-            this.radioButton_chartsTypeSpline.TabStop = true;
             this.radioButton_chartsTypeSpline.Text = "Spline";
             this.radioButton_chartsTypeSpline.UseVisualStyleBackColor = true;
             this.radioButton_chartsTypeSpline.CheckedChanged += new System.EventHandler(this.radioButton_chartsTypeSpline_CheckedChanged);
@@ -429,10 +431,10 @@ namespace ModernComputerTechnologiesGUI {
             this.numericUpDown_endOfInterval.Size = new System.Drawing.Size(76, 22);
             this.numericUpDown_endOfInterval.TabIndex = 4;
             this.numericUpDown_endOfInterval.Value = new decimal(new int[] {
-            45,
+            5,
             0,
             0,
-            65536});
+            0});
             // 
             // label_endOfInterval
             // 
@@ -457,10 +459,10 @@ namespace ModernComputerTechnologiesGUI {
             this.numericUpDown_startOfInterval.Size = new System.Drawing.Size(76, 22);
             this.numericUpDown_startOfInterval.TabIndex = 2;
             this.numericUpDown_startOfInterval.Value = new decimal(new int[] {
-            25,
+            5,
             0,
             0,
-            -2147418112});
+            -2147483648});
             // 
             // label_startOfInterval
             // 
@@ -489,7 +491,7 @@ namespace ModernComputerTechnologiesGUI {
             this.groupBox_initCond.Controls.Add(this.panel_initNumN);
             this.groupBox_initCond.Controls.Add(this.panel_initCondForRealF);
             this.groupBox_initCond.Controls.Add(this.panel_initCondForComplexF);
-            this.groupBox_initCond.Location = new System.Drawing.Point(14, -1);
+            this.groupBox_initCond.Location = new System.Drawing.Point(11, 11);
             this.groupBox_initCond.Name = "groupBox_initCond";
             this.groupBox_initCond.Size = new System.Drawing.Size(382, 372);
             this.groupBox_initCond.TabIndex = 17;
@@ -501,7 +503,7 @@ namespace ModernComputerTechnologiesGUI {
             this.groupBox_plotCharts.Controls.Add(this.button_testButton);
             this.groupBox_plotCharts.Controls.Add(this.button_plotChartOriginalF);
             this.groupBox_plotCharts.Controls.Add(this.button_plotChartModifiedF);
-            this.groupBox_plotCharts.Location = new System.Drawing.Point(14, 373);
+            this.groupBox_plotCharts.Location = new System.Drawing.Point(11, 385);
             this.groupBox_plotCharts.Name = "groupBox_plotCharts";
             this.groupBox_plotCharts.Size = new System.Drawing.Size(381, 137);
             this.groupBox_plotCharts.TabIndex = 18;
@@ -535,7 +537,7 @@ namespace ModernComputerTechnologiesGUI {
             this.groupBox_advancedSettings.Controls.Add(this.panel_deleteCharts);
             this.groupBox_advancedSettings.Controls.Add(this.panel_initChartsType);
             this.groupBox_advancedSettings.Controls.Add(this.checkBox_chartscustom);
-            this.groupBox_advancedSettings.Location = new System.Drawing.Point(14, 513);
+            this.groupBox_advancedSettings.Location = new System.Drawing.Point(11, 526);
             this.groupBox_advancedSettings.Name = "groupBox_advancedSettings";
             this.groupBox_advancedSettings.Size = new System.Drawing.Size(381, 250);
             this.groupBox_advancedSettings.TabIndex = 19;
@@ -554,6 +556,9 @@ namespace ModernComputerTechnologiesGUI {
             // 
             // chart_mainChart
             // 
+            this.chart_mainChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
             this.chart_mainChart.ChartAreas.Add(chartArea1);
             legend1.Alignment = System.Drawing.StringAlignment.Center;
@@ -562,64 +567,69 @@ namespace ModernComputerTechnologiesGUI {
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
             this.chart_mainChart.Legends.Add(legend1);
-            this.chart_mainChart.Location = new System.Drawing.Point(6, 16);
+            this.chart_mainChart.Location = new System.Drawing.Point(13, 15);
             this.chart_mainChart.Name = "chart_mainChart";
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             series1.Legend = "Legend1";
             series1.Name = "Original f";
             series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             series2.Legend = "Legend1";
             series2.Name = "Modified f";
             this.chart_mainChart.Series.Add(series1);
             this.chart_mainChart.Series.Add(series2);
-            this.chart_mainChart.Size = new System.Drawing.Size(920, 608);
+            this.chart_mainChart.Size = new System.Drawing.Size(919, 658);
             this.chart_mainChart.TabIndex = 0;
             this.chart_mainChart.Text = "1";
             // 
             // groupBox_mainChartAndInfoPanel
             // 
+            this.groupBox_mainChartAndInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_mainChartAndInfoPanel.Controls.Add(this.panel_infoPanel);
             this.groupBox_mainChartAndInfoPanel.Controls.Add(this.chart_mainChart);
-            this.groupBox_mainChartAndInfoPanel.Location = new System.Drawing.Point(401, -1);
+            this.groupBox_mainChartAndInfoPanel.Location = new System.Drawing.Point(420, 3);
             this.groupBox_mainChartAndInfoPanel.Name = "groupBox_mainChartAndInfoPanel";
-            this.groupBox_mainChartAndInfoPanel.Size = new System.Drawing.Size(933, 766);
+            this.groupBox_mainChartAndInfoPanel.Size = new System.Drawing.Size(946, 784);
             this.groupBox_mainChartAndInfoPanel.TabIndex = 20;
             this.groupBox_mainChartAndInfoPanel.TabStop = false;
             // 
             // panel_infoPanel
             // 
-            this.panel_infoPanel.Controls.Add(this.label_infoString2);
-            this.panel_infoPanel.Controls.Add(this.label_infoString1);
-            this.panel_infoPanel.Location = new System.Drawing.Point(6, 630);
+            this.panel_infoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_infoPanel.Controls.Add(this.label_infoString);
+            this.panel_infoPanel.Location = new System.Drawing.Point(13, 681);
             this.panel_infoPanel.Name = "panel_infoPanel";
-            this.panel_infoPanel.Size = new System.Drawing.Size(919, 128);
+            this.panel_infoPanel.Size = new System.Drawing.Size(919, 90);
             this.panel_infoPanel.TabIndex = 1;
             // 
-            // label_infoString2
+            // groupBox_leftPanel
             // 
-            this.label_infoString2.AutoSize = true;
-            this.label_infoString2.Location = new System.Drawing.Point(17, 69);
-            this.label_infoString2.MaximumSize = new System.Drawing.Size(880, 50);
-            this.label_infoString2.MinimumSize = new System.Drawing.Size(880, 50);
-            this.label_infoString2.Name = "label_infoString2";
-            this.label_infoString2.Size = new System.Drawing.Size(880, 50);
-            this.label_infoString2.TabIndex = 7;
+            this.groupBox_leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox_leftPanel.Controls.Add(this.groupBox_initCond);
+            this.groupBox_leftPanel.Controls.Add(this.groupBox_plotCharts);
+            this.groupBox_leftPanel.Controls.Add(this.groupBox_advancedSettings);
+            this.groupBox_leftPanel.Location = new System.Drawing.Point(10, 3);
+            this.groupBox_leftPanel.Name = "groupBox_leftPanel";
+            this.groupBox_leftPanel.Size = new System.Drawing.Size(404, 784);
+            this.groupBox_leftPanel.TabIndex = 21;
+            this.groupBox_leftPanel.TabStop = false;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 775);
+            this.ClientSize = new System.Drawing.Size(1374, 796);
+            this.Controls.Add(this.groupBox_leftPanel);
             this.Controls.Add(this.groupBox_mainChartAndInfoPanel);
-            this.Controls.Add(this.groupBox_advancedSettings);
-            this.Controls.Add(this.groupBox_plotCharts);
-            this.Controls.Add(this.groupBox_initCond);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Drawing charts (nearsolt)";
@@ -650,6 +660,7 @@ namespace ModernComputerTechnologiesGUI {
             this.groupBox_mainChartAndInfoPanel.ResumeLayout(false);
             this.panel_infoPanel.ResumeLayout(false);
             this.panel_infoPanel.PerformLayout();
+            this.groupBox_leftPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -660,7 +671,7 @@ namespace ModernComputerTechnologiesGUI {
         private System.Windows.Forms.RadioButton radioButton_caseForComplexF;
         private System.Windows.Forms.Button button_generateComplexNum;
         private System.Windows.Forms.NumericUpDown numericUpDown_numN;
-        private System.Windows.Forms.Label label_infoString1;
+        private System.Windows.Forms.Label label_infoString;
         private System.Windows.Forms.Button button_plotChartOriginalF;
         private System.Windows.Forms.NumericUpDown numericUpDown_percent;
         private System.Windows.Forms.Panel panel_deleteCharts;
@@ -696,8 +707,8 @@ namespace ModernComputerTechnologiesGUI {
         private System.Windows.Forms.Button button_testButton;
         private System.Windows.Forms.Button button_testClearInfo;
         private System.Windows.Forms.CheckBox checkBox_debug;
-        private System.Windows.Forms.Label label_infoString2;
         private System.Windows.Forms.Label label_initScalingCoeff;
         private System.Windows.Forms.NumericUpDown numericUpDown_ScalingCoeff;
+        private System.Windows.Forms.GroupBox groupBox_leftPanel;
     }
 }

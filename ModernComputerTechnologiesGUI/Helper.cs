@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
+using NLog;
 
 namespace ModernComputerTechnologiesGUI {
     class Helper {
+        internal static Logger logger = LogManager.GetCurrentClassLogger();
+
         /// <summary>
         /// Random-генерация отсортированного по Re массива комплексных чисел, диапазон Re и Im от 0 до coeff
         /// </summary>
@@ -48,9 +51,9 @@ namespace ModernComputerTechnologiesGUI {
             Complex[] DFTArray = new Complex[numN];
             for (int j = 0; j < numN; j++) {
                 for (int k = 0; k < numN; k++) {
-                    DFTArray[j] += CalcExp(j, k, numN, inverse) * array[k];
+                    DFTArray[j] += CalcExp(j, k, numN, inverse) * array[k];                    
                 }
-                DFTArray[j] /= inverse ? 1 : numN;
+                DFTArray[j] /= inverse ? (Complex)1 : (Complex)numN;              
             }
             return DFTArray;
         }
@@ -61,7 +64,10 @@ namespace ModernComputerTechnologiesGUI {
         /// <param name="value">точка</param>
         /// <returns></returns>
         private static double CalcFuncValues(double value) {
-            return Math.Pow(value, 3) - value + 2;
+            //return Math.Pow(value, 3) - value + 2;
+            return Math.Pow(value, 2);
+            //return Math.Cos(value);
+            //return Math.Sin(value);
         }
 
         /// <summary>
@@ -104,31 +110,14 @@ namespace ModernComputerTechnologiesGUI {
                 tupleArray[j] = new Tuple<Complex, int>(array[j], j);
             }
             tupleArray = ((Tuple<Complex, int>[])tupleArray.Clone()).OrderBy(c => c.Item1.Magnitude).ToArray();
-            #region debug
-            //foreach (Tuple<Complex, int> item in tupleArray) {
-            //    Console.Write($"({item.Item1.Real}, {item.Item1.Imaginary}), ");
-            //}
-            //Console.WriteLine($" - sorted array coeff");
-            #endregion
+            //logger.Debug($"<ZeroingPercentageOfMinimumArrayValues> Отсортированные по возрастанию элементы массива>:\n{string.Join(", ", tupleArray.Select(c => $"<({c.Item1.Real}; {c.Item1.Imaginary}); {c.Item2}>").ToArray())}\n");
             for (int j = 0; j < numOfZeroed; j++) {
                 tupleArray[j] = new Tuple<Complex, int>((Complex)0, tupleArray[j].Item2);
-            }    
-            #region debug
-            //foreach (Tuple<Complex, int> item in tupleArray) {
-            //    Console.Write($"({item.Item1.Real}, {item.Item1.Imaginary}), ");
-            //}
-            //Console.WriteLine($" - sorted array coeff with numOfZeroed");
-            #endregion
+            }
             tupleArray = ((Tuple<Complex, int>[])tupleArray.Clone()).OrderBy(c => c.Item2).ToArray();
             for (int j = 0; j < numN; j++) {
                 array[j] = tupleArray[j].Item1;
             }
-            #region debug
-            //foreach (Complex item in array) {
-            //    Console.Write($"({item.Real}, {item.Imaginary}), ");
-            //}
-            //Console.WriteLine($" - array coeff");
-            #endregion
         }
     }
 }

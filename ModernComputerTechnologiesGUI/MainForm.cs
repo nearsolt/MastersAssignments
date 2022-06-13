@@ -10,10 +10,13 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Numerics;
 using System.Globalization;
+using NLog;
+using System.IO;
+using System.Threading;
 
 namespace ModernComputerTechnologiesGUI {
-    public partial class Form2 : Form {
-        public Form2() {
+    public partial class MainForm : Form {
+        public MainForm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
@@ -77,8 +80,8 @@ namespace ModernComputerTechnologiesGUI {
             } else {
                 this.panel_initChartsType.Enabled = false;
                 this.panel_initChartsType.Visible = false;
-                this.chart_mainChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-                this.chart_mainChart.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                this.chart_mainChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+                this.chart_mainChart.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             }
         }
         private void checkBox_debug_CheckedChanged(object sender, EventArgs e) {
@@ -93,7 +96,7 @@ namespace ModernComputerTechnologiesGUI {
         #endregion
 
         #region Buttons
-        private void button_generateComplexNum_Click(object sender, EventArgs e) {    
+        private void button_generateComplexNum_Click(object sender, EventArgs e) {
             GenerateComplexNum();
         }
         private void button_plotChartOriginalF_Click(object sender, EventArgs e) {
@@ -124,17 +127,26 @@ namespace ModernComputerTechnologiesGUI {
         }
         #endregion
 
-        #region Test Buttons
+        #region Test Buttons & Debug
+        private static string path = "logs\\Debug.log";
+        private FileInfo fileInfo = new FileInfo(path);
         private void button_testButton_Click(object sender, EventArgs e) {
-            string info = string.Empty;
-            foreach (Complex item in arrayOfComplexNum) {
-                info += $"({item.Real}, {item.Imaginary}), ";
+            Helper.logger.Info($"{string.Concat(Enumerable.Repeat("-", 150))}\n");
+            if (fileInfo.Exists) {
+                Process.Start("notepad++.exe", path);
             }
-            Console.WriteLine($"( Re( f ); Im( f ) ):\n{info}");
         }
         private void button_testClearInfo_Click(object sender, EventArgs e) {
-            this.label_infoString1.Text = string.Empty;
-            this.label_infoString2.Text = string.Empty;
+            if (fileInfo.Exists) {
+                fileInfo.Delete();
+            }
+        }
+        private void DebugInfo(Complex[] arrayCoeffC, int numberOfZeroed, Complex[] arrayOfModFunc) {
+            IEnumerable<Complex> tmp = arrayOfModFunc.Distinct();
+            Helper.logger.Debug($"<DebugInfo> Количество различных элементов массива <{nameof(arrayOfModFunc)}> = {tmp.Count()}");
+            Helper.logger.Debug($"<DebugInfo> Различные элементы <(Re_f^_k; Im_f^_k)>:\n{string.Join(", ", tmp.Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}\n");
+            Helper.logger.Debug($"<DebugInfo> Число обнуленных элементов = {numberOfZeroed}.  CoeffC !=0:\n{string.Join(", ", arrayCoeffC.Where(c => c != (Complex)0).Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}\n");
+            this.label_infoString.Text = $"Количество различных элементов массива <{nameof(arrayOfModFunc)}> = {tmp.Count()}.\nЧисло обнуленных элементов = {numberOfZeroed}.";
         }
         #endregion
 
@@ -149,7 +161,7 @@ namespace ModernComputerTechnologiesGUI {
             scalingCoeff = (int)this.numericUpDown_ScalingCoeff.Value;
             arrayOfComplexNum = Helper.GenerateSortedComplexNumArray(numberN, scalingCoeff);
         }
-        
+
         /// <summary>
         /// Построение графика исходной функции f_k \in C
         /// </summary>
@@ -158,17 +170,14 @@ namespace ModernComputerTechnologiesGUI {
             foreach (Complex item in arrayOfComplexNum) {
                 this.chart_mainChart.Series[0].Points.AddXY(item.Real, item.Imaginary);
             }
+
             #region debug BuildChartOfOriginalComplexFunc
             if (this.checkBox_debug.Checked) {
-                string info1 = string.Empty;
-                foreach (Complex item in arrayOfComplexNum) {
-                    info1 += $"({item.Real}, {item.Imaginary}), ";
-                }
-                this.label_infoString1.Text = $"( Re( f ), Im( f ) ):\n{info1}";
+                Helper.logger.Info($"<BuildChartOfOriginalComplexFunc> Исходная комплексная функция ( Re_f_k; Im_f_k ):\n{string.Join(", ", arrayOfComplexNum.Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}\n");
             }
             #endregion
         }
-        
+
         /// <summary>
         /// Построение графика измененной функции f_k \in C
         /// </summary>
@@ -178,25 +187,34 @@ namespace ModernComputerTechnologiesGUI {
             int numberOfZeroed = numberN * zeroingPercentage / 100;
 
             Complex[] arrayCoeffC = Helper.DFT(arrayOfComplexNum, numberN);
-            Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
-            
-            Complex[] arrayOfModifiedFunc = Helper.DFT(arrayCoeffC, numberN, true);
-            arrayOfModifiedFunc = ((Complex[])arrayOfModifiedFunc.Clone()).OrderBy(c => c.Real).ToArray();
 
-            foreach (Complex item in arrayOfModifiedFunc) {                                                                
-                this.chart_mainChart.Series[1].Points.AddXY(item.Real, item.Imaginary);
-            }
             #region debug BuildChartOfModifiedComplexFunc
             if (this.checkBox_debug.Checked) {
-                string info2 = string.Empty;
-                foreach (Complex item in arrayOfModifiedFunc) {
-                    info2 += $"({item.Real}, {item.Imaginary}), ";
-                }
-                this.label_infoString2.Text = $"{nameof(numberOfZeroed)}={numberOfZeroed}. ( Re( f^ ), Im( f^ ) ):\n{info2}";
+                Helper.logger.Debug($"<BuildChartOfModifiedComplexFunc>  Коэффициенты С до обнуления:\n{string.Join(", ", arrayCoeffC.Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}\n");
             }
             #endregion
+
+            Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
+
+            #region debug BuildChartOfModifiedComplexFunc
+            if (this.checkBox_debug.Checked) {
+                Helper.logger.Debug($"<BuildChartOfModifiedComplexFunc>  Коэффициенты С после обнуления:\n{string.Join(", ", arrayCoeffC.Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}\n");
+            }
+            #endregion
+
+            Complex[] arrayOfModifiedFunc = Helper.DFT(arrayCoeffC, numberN, true);
+
+            #region debug BuildChartOfModifiedComplexFunc
+            if (this.checkBox_debug.Checked) {
+                DebugInfo(arrayCoeffC, numberOfZeroed, arrayOfModifiedFunc);
+            }
+            #endregion
+
+            foreach (Complex item in arrayOfModifiedFunc) {
+                this.chart_mainChart.Series[1].Points.AddXY(item.Real, item.Imaginary);
+            }
         }
-        
+
         /// <summary>
         /// Построение графика исходной функции f_k \in R
         /// </summary>
@@ -205,26 +223,27 @@ namespace ModernComputerTechnologiesGUI {
             numberN = (int)this.numericUpDown_numN.Value;
             startOfInterval = (double)this.numericUpDown_startOfInterval.Value;
             endOfInterval = (double)this.numericUpDown_endOfInterval.Value;
-            
+
             arrayOfValuesX = new double[numberN];
             Helper.FillArrayOfValuesX(arrayOfValuesX, numberN, startOfInterval, endOfInterval);
             arrayOfFuncValues = new double[numberN];
             Helper.FillArrayOfFuncValues(arrayOfValuesX, arrayOfFuncValues, numberN);
 
-            for (int j = 0; j < numberN ; j++) {
+            for (int j = 0; j < numberN; j++) {
                 this.chart_mainChart.Series[0].Points.AddXY(arrayOfValuesX[j], arrayOfFuncValues[j]);
             }
+
             #region debug BuildChartOfOriginalRealFunc
             if (this.checkBox_debug.Checked) {
-                string info1 = string.Empty;
+                string info = string.Empty;
                 for (int j = 0; j < numberN; j++) {
-                    info1 += $"({arrayOfValuesX[j]}, {arrayOfFuncValues[j]}), ";
+                    info += $"({arrayOfValuesX[j]}; {arrayOfFuncValues[j]}), ";
                 }
-                this.label_infoString1.Text = $"( x_k, f_k ):\n{info1}";
+                Helper.logger.Info($"<BuildChartOfOriginalRealFunc> Исходная вещественная функция ( x_k; f_k ):\n{info}\n");
             }
             #endregion
         }
-        
+
         /// <summary>
         /// Построение графика измененной функции f_k \in R
         /// </summary>
@@ -238,23 +257,32 @@ namespace ModernComputerTechnologiesGUI {
                 arrayOfComplexFunc[j] = (Complex)arrayOfFuncValues[j];
             }
             Complex[] arrayCoeffC = Helper.DFT(arrayOfComplexFunc, numberN);
+
+            #region debug BuildChartOfModifiedComplexFunc
+            if (this.checkBox_debug.Checked) {
+                Helper.logger.Debug($"<BuildChartOfModifiedRealFunc> Коэффициенты С до обнуления:\n{string.Join(", ", arrayCoeffC.Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}\n");
+            }
+            #endregion
+
             Helper.ZeroingPercentageOfMinimumArrayValues(arrayCoeffC, numberN, numberOfZeroed);
 
+            #region debug BuildChartOfModifiedComplexFunc
+            if (this.checkBox_debug.Checked) {
+                Helper.logger.Debug($"<BuildChartOfModifiedRealFunc> Коэффициенты С после обнуления:\n{string.Join(", ", arrayCoeffC.Select(c => $"({c.Real}; {c.Imaginary})").ToArray())}\n");
+            }
+            #endregion
+
             Complex[] arrayOfModifiedComplexFunc = Helper.DFT(arrayCoeffC, numberN, true);
-            arrayOfModifiedComplexFunc = ((Complex[])arrayOfModifiedComplexFunc.Clone()).OrderBy(c => c.Real).ToArray();
+
+            #region debug BuildChartOfModifiedComplexFunc
+            if (this.checkBox_debug.Checked) {
+                DebugInfo(arrayCoeffC, numberOfZeroed, arrayOfModifiedComplexFunc);
+            }
+            #endregion
 
             for (int j = 0; j < numberN; j++) {
                 this.chart_mainChart.Series[1].Points.AddXY(arrayOfValuesX[j], arrayOfModifiedComplexFunc[j].Real);
             }
-            #region debug BuildChartOfModifiedComplexFunc
-            if (this.checkBox_debug.Checked) {
-                string info2 = string.Empty;
-                for (int j = 0; j < numberN; j++) {
-                    info2 += $"({arrayOfValuesX[j]}, {arrayOfModifiedComplexFunc[j].Real}), ";
-                }
-                this.label_infoString2.Text = $"{nameof(numberOfZeroed)}={numberOfZeroed}. ( x_k, f^_k ):\n{info2}";
-            }
-            #endregion
         }
         #endregion
     }
